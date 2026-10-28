@@ -1,0 +1,4368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Xeveron Editz — International Edits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ----------------------------------------------------
+       XEVERON EDITZ — PREMIUM CHARCOAL & WHITE THEME
+       ---------------------------------------------------- */
+    :root {
+      --bg-base: #0a0b0d;
+      --bg-surface: #12141a;
+      --bg-surface-elevated: #1a1e27;
+      --bg-card: #151821;
+      --bg-card-hover: #1f2430;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.16);
+      --border-highlight: rgba(255, 255, 255, 0.35);
+      
+      --text-pure: #ffffff;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      
+      --accent-silver: #e2e8f0;
+      --accent-glow: rgba(255, 255, 255, 0.06);
+      --accent-gold: #f59e0b;
+      --accent-emerald: #10b981;
+      --accent-emerald-soft: rgba(16, 185, 129, 0.15);
+      --accent-rose: #f43f5e;
+      --accent-blue: #38bdf8;
+
+      --font-display: 'Cinzel', serif, system-ui;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      --shadow-elevated: 0 20px 45px -12px rgba(0, 0, 0, 0.85);
+      --shadow-glow: 0 0 25px rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Floating Background Typography */
+    .floating-words-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-word {
+      position: absolute;
+      font-family: var(--font-display);
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.022);
+      user-select: none;
+      white-space: nowrap;
+      animation: floatWordDrift 30s linear infinite alternate;
+    }
+
+    .fw-1 { top: 8%; left: -5%; font-size: clamp(3rem, 10vw, 8.5rem); animation-duration: 36s; }
+    .fw-2 { top: 28%; right: -6%; font-size: clamp(2.5rem, 8vw, 7rem); animation-duration: 42s; animation-delay: -5s; }
+    .fw-3 { top: 52%; left: -3%; font-size: clamp(3rem, 9vw, 8rem); animation-duration: 32s; animation-delay: -12s; }
+    .fw-4 { top: 70%; right: -4%; font-size: clamp(2.8rem, 8vw, 7.5rem); animation-duration: 48s; animation-delay: -8s; }
+    .fw-5 { top: 88%; left: 4%; font-size: clamp(2.6rem, 7vw, 6.5rem); animation-duration: 38s; animation-delay: -18s; }
+    .fw-6 { top: 40%; left: 35%; font-size: clamp(2.5rem, 7vw, 6rem); animation-duration: 45s; animation-delay: -15s; }
+
+    @keyframes floatWordDrift {
+      0% { transform: translate(0, 0) rotate(-1deg); }
+      50% { transform: translate(30px, 25px) rotate(1deg); }
+      100% { transform: translate(-20px, 50px) rotate(-0.5deg); }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .floating-word { animation: none !important; }
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Sticky Navigation Header */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 16, 22, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    /* Wordmark Branding */
+    .brand-group {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .brand-wordmark {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--text-pure);
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.15;
+    }
+
+    .brand-tagline {
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    /* Header Nav Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      position: relative;
+      padding: 0.35rem 0;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-pure);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--text-pure);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .btn-admin-nav {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-medium);
+      color: var(--text-primary);
+      padding: 0.5rem 1.15rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-admin-nav:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--text-pure);
+      color: var(--text-pure);
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-medium);
+      padding: 1.5rem;
+      z-index: 99;
+      box-shadow: var(--shadow-elevated);
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.85rem 1.85rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #0c0d10;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-primary:hover {
+      background: #e2e8f0;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary);
+      border: 1px solid var(--border-medium);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--text-pure);
+      transform: translateY(-2px);
+      color: var(--text-pure);
+    }
+
+    .btn-emerald {
+      background: var(--accent-emerald);
+      color: #0c0d10;
+      font-weight: 700;
+    }
+
+    .btn-emerald:hover {
+      background: #34d399;
+      transform: translateY(-2px);
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    /* Hero Section */
+    section.hero-section {
+      padding: 5.5rem 0 5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.15rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-medium);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 10px var(--accent-emerald);
+    }
+
+    .hero-branding-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7.5vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 0.45rem;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-branding-tagline {
+      font-family: var(--font-body);
+      font-size: clamp(1rem, 2.8vw, 1.65rem);
+      font-style: italic;
+      color: var(--text-secondary);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 2.25rem;
+      font-weight: 400;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3.5vw, 2.35rem);
+      font-weight: 700;
+      color: var(--text-pure);
+      max-width: 860px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.35;
+      background: linear-gradient(180deg, #ffffff 60%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 2.75rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Trust highlights */
+    .hero-highlights {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .highlight-icon {
+      color: var(--text-pure);
+      font-size: 1.1rem;
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--text-pure);
+      letter-spacing: 0.04em;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0.75rem auto 0;
+      font-size: 0.98rem;
+    }
+
+    /* Section: Why Choose Us */
+    section.features-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-medium);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--text-pure);
+      margin-bottom: 1.35rem;
+    }
+
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-bottom: 0.65rem;
+    }
+
+    .feature-text {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Section: How It Works */
+    section.steps-section {
+      padding: 5rem 0;
+      background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-surface) 50%, var(--bg-base) 100%);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.75rem;
+      position: relative;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.75rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .step-card:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-3px);
+    }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.15);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-bottom: 0.65rem;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Section: Video Gallery (Preview Models) */
+    section.gallery-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-card:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .video-thumb-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-thumb-container video,
+    .video-thumb-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .video-thumb-container:hover .video-play-overlay {
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .play-btn-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      color: #0c0d10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      padding-left: 3px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .video-thumb-container:hover .play-btn-circle {
+      transform: scale(1.1);
+      background: #ffffff;
+    }
+
+    .video-details {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .video-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-bottom: 0.5rem;
+    }
+
+    .video-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .video-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 0.9rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .badge-published {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-emerald);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .empty-gallery-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4.5rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-medium);
+      border-radius: var(--radius-lg);
+    }
+
+    .empty-icon {
+      font-size: 3rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Section: Order A Video (Order Form) */
+    section.order-section {
+      padding: 5.5rem 0;
+      background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-surface) 100%);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .order-card-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.75rem, 4vw, 3.25rem);
+      box-shadow: var(--shadow-elevated);
+      position: relative;
+    }
+
+    .order-form-group {
+      margin-bottom: 1.85rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-pure);
+      margin-bottom: 0.55rem;
+    }
+
+    .form-label span.req {
+      color: var(--accent-rose);
+      margin-left: 2px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.15rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--border-highlight);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .input-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Duration Slider & Realtime Price Card */
+    .duration-pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .duration-display-large {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-pure);
+      font-family: var(--font-display);
+    }
+
+    .price-display-large {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--text-pure);
+      font-family: var(--font-display);
+      text-align: right;
+    }
+
+    .price-currency {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent-emerald);
+      margin-right: 2px;
+    }
+
+    .slider-container {
+      position: relative;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .range-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: #2a2f3d;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      border: 2px solid #0c0d10;
+      transition: transform 0.15s ease;
+    }
+
+    .range-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .range-slider::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      border: 2px solid #0c0d10;
+    }
+
+    .slider-labels-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .pricing-formula-note {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--border-highlight);
+      margin-top: 1rem;
+    }
+
+    /* Video Upload Area */
+    .upload-dropzone {
+      border: 2px dashed var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .upload-dropzone.dragover {
+      border-color: var(--text-pure);
+      background: var(--bg-card-hover);
+    }
+
+    .upload-icon {
+      font-size: 2.75rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.85rem;
+    }
+
+    .upload-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-pure);
+      margin-bottom: 0.35rem;
+    }
+
+    .upload-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .file-selected-box {
+      display: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    .file-info-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      overflow: hidden;
+    }
+
+    .file-name-text {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-pure);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 320px;
+    }
+
+    .file-size-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .file-remove-btn {
+      background: none;
+      border: none;
+      color: var(--accent-rose);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    /* Progress bar */
+    .upload-progress-container {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #94a3b8, #ffffff);
+      transition: width 0.2s ease;
+    }
+
+    .progress-status-text {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.35rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Watermark Toggle */
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #ffffff;
+      cursor: pointer;
+    }
+
+    .watermark-subfield {
+      display: none;
+      margin-top: 1rem;
+      padding-left: 2rem;
+    }
+
+    /* Payment Policy Banner */
+    .payment-policy-box {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
+      margin: 2.25rem 0 2rem;
+      text-align: center;
+    }
+
+    .policy-headline {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-emerald);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.35rem;
+    }
+
+    .policy-subtext {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Section: FAQ Accordion */
+    section.faq-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .faq-container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-medium);
+    }
+
+    .faq-question-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.35rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-pure);
+      text-align: left;
+      cursor: pointer;
+      gap: 1rem;
+    }
+
+    .faq-icon-arrow {
+      font-size: 0.9rem;
+      transition: transform 0.25s ease;
+      color: var(--text-secondary);
+    }
+
+    .faq-item.open .faq-icon-arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+    }
+
+    .faq-item.open .faq-answer-body {
+      max-height: 500px;
+      transition: max-height 0.35s ease-in-out;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.35rem;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Section: Reviews */
+    section.reviews-section {
+      padding: 5rem 0;
+      background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-surface) 100%);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .reviews-badge-wrapper {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .reviews-status-badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      border-color: var(--border-medium);
+      transform: translateY(-3px);
+    }
+
+    .review-stars {
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .review-quote {
+      font-size: 0.94rem;
+      color: var(--text-primary);
+      line-height: 1.65;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .reviewer-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--text-pure);
+      font-size: 0.85rem;
+    }
+
+    .reviewer-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-pure);
+    }
+
+    .reviewer-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Section: About Us & Contact */
+    section.about-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .about-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      padding: clamp(2rem, 5vw, 3.5rem);
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 760px;
+      margin: 1.25rem auto 2.5rem;
+    }
+
+    .contact-channels-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-card-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      padding: 1rem 1.75rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-pure);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .contact-card-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-pure);
+      transform: translateY(-2px);
+    }
+
+    .contact-card-btn.wa-btn:hover {
+      border-color: #25d366;
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.25);
+    }
+
+    /* Footer */
+    footer.site-footer {
+      border-top: 1px solid var(--border-subtle);
+      background: #090a0d;
+      padding: 4.5rem 0 2.5rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand-col {
+      max-width: 380px;
+    }
+
+    .footer-text {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+      line-height: 1.65;
+    }
+
+    .footer-nav-col h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-pure);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-nav-col ul {
+      list-style: none;
+    }
+
+    .footer-nav-col li {
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-nav-col a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-nav-col a:hover {
+      color: var(--text-pure);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Modal Framework */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.25rem;
+      position: relative;
+      box-shadow: var(--shadow-elevated);
+      transform: scale(0.95);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-box-large {
+      max-width: 900px;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--text-pure);
+    }
+
+    /* Video Player Modal */
+    .video-modal-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: var(--radius-md);
+      margin-top: 1rem;
+      outline: none;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 3000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      pointer-events: none;
+    }
+
+    .toast {
+      pointer-events: auto;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-medium);
+      color: var(--text-pure);
+      padding: 1rem 1.4rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-elevated);
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      min-width: 300px;
+      max-width: 420px;
+      animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s ease;
+    }
+
+    .toast.toast-success { border-left: 4px solid var(--accent-emerald); }
+    .toast.toast-error { border-left: 4px solid var(--accent-rose); }
+    .toast.toast-info { border-left: 4px solid var(--accent-blue); }
+
+    @keyframes toastIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* ----------------------------------------------------
+       ADMIN PANEL STYLING
+       ---------------------------------------------------- */
+    .admin-container {
+      display: none;
+      min-height: 100vh;
+      background: var(--bg-base);
+    }
+
+    .admin-container.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-topbar {
+      height: 70px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .admin-main-layout {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .admin-sidebar {
+      width: 260px;
+      background: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .admin-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.85rem 1.15rem;
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .admin-nav-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-pure);
+    }
+
+    .admin-nav-item.active {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-pure);
+      font-weight: 600;
+      border-left: 3px solid #ffffff;
+    }
+
+    .admin-content-area {
+      flex-grow: 1;
+      padding: 2.25rem;
+      background: var(--bg-base);
+      max-width: 1250px;
+      overflow-x: auto;
+    }
+
+    .admin-section {
+      display: none;
+    }
+
+    .admin-section.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Metric Summary Cards */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.35rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--text-pure);
+    }
+
+    /* Tables */
+    .admin-table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow-x: auto;
+      margin-top: 1.25rem;
+    }
+
+    table.admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    table.admin-table th {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    table.admin-table td {
+      padding: 1.15rem 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    table.admin-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Status Badges */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .status-pending { background: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+    .status-in-progress { background: rgba(56, 189, 248, 0.15); color: #38bdf8; }
+    .status-delivered { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .status-cancelled { background: rgba(244, 63, 94, 0.15); color: #fb7185; }
+
+    .payment-badge-unpaid { background: rgba(244, 63, 94, 0.12); color: #f43f5e; }
+    .payment-badge-paid { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); }
+
+    /* Action buttons in tables */
+    .table-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-table-sm {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Simple SVG Chart */
+    .sales-chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .chart-container-svg {
+      width: 100%;
+      height: 240px;
+      margin-top: 1.5rem;
+    }
+
+    /* Mode Banner */
+    .demo-mode-banner {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      font-size: 0.84rem;
+      color: #bae6fd;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .admin-sidebar { width: 70px; padding: 1rem 0.5rem; }
+      .admin-sidebar span.label-text { display: none; }
+      .admin-content-area { padding: 1.5rem 1rem; }
+    }
+
+    @media (max-width: 600px) {
+      .pricing-header-flex { flex-direction: column; align-items: flex-start; }
+      .price-display-large { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Background Words -->
+  <div class="floating-words-container" aria-hidden="true">
+    <div class="floating-word fw-1">XEVERON EDITZ</div>
+    <div class="floating-word fw-2">CINEMATIC</div>
+    <div class="floating-word fw-3">EDITING</div>
+    <div class="floating-word fw-4">CREATIVITY</div>
+    <div class="floating-word fw-5">VIDEOS</div>
+    <div class="floating-word fw-6">PHOTOS</div>
+  </div>
+
+  <!-- Main Website Wrapper -->
+  <div id="website-app">
+    
+    <!-- Header -->
+    <header class="site-header" id="main-header">
+      <div class="container header-nav">
+        <a href="#home" class="brand-group" id="nav-brand-link">
+          <span class="brand-wordmark" id="header-brand-name">Xeveron Editz</span>
+          <span class="brand-tagline" id="header-brand-tagline">International Edits</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#order" class="nav-link">Order a Video</a></li>
+          <li><a href="#preview" class="nav-link">Preview Models</a></li>
+          <li>
+            <button type="button" class="btn-admin-nav" id="open-admin-login-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>Admin</span>
+            </button>
+          </li>
+        </ul>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-toggle-btn" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div class="mobile-drawer" id="mobile-nav-drawer">
+        <a href="#home" class="nav-link mobile-nav-link">Home</a>
+        <a href="#order" class="nav-link mobile-nav-link">Order a Video</a>
+        <a href="#preview" class="nav-link mobile-nav-link">Preview Models</a>
+        <button type="button" class="btn-admin-nav" id="mobile-open-admin-btn" style="justify-content: center; width: 100%;">
+          <span>Admin Portal</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Homepage Content -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-section" id="home">
+        <div class="container">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            <span>Worldwide Video Post-Production</span>
+          </div>
+
+          <h1 class="hero-branding-title" id="hero-brand-name">XEVERON EDITZ</h1>
+          <p class="hero-branding-tagline" id="hero-brand-tagline">International Edits</p>
+
+          <h2 class="hero-headline">“Your Vision. Our Edit. Extraordinary Results.”</h2>
+          
+          <p class="hero-description">
+            Submit your original raw footage and request custom, high-impact professional video editing tailored for creators, brands, and cinematic storytellers worldwide.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#order" class="btn btn-primary" id="hero-cta-order">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+              <span>Order a Video</span>
+            </a>
+            <a href="#preview" class="btn btn-secondary" id="hero-cta-preview">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+              <span>Preview Models</span>
+            </a>
+          </div>
+
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <span class="highlight-icon">⏱️</span>
+              <span id="hero-delivery-badge">Target ~24 Hours Delivery</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🛡️</span>
+              <span>Zero Upfront Card Payment</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">⚡</span>
+              <span>Precise 5s Duration Increments</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon">🌍</span>
+              <span>International Delivery</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us Section -->
+      <section class="features-section" id="why-choose-us">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-subtitle">Excellence in Craft</div>
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-desc">Experience studio-grade editing crafted specifically to match your vision, format, and pacing requirements.</p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon-box">🎬</div>
+              <h3 class="feature-title">Professional Video Editing</h3>
+              <p class="feature-text">Meticulous color grading, rhythm cuts, audio design, and cinematic pacing designed to capture attention immediately.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-box">✨</div>
+              <h3 class="feature-title">Custom Text and Effects</h3>
+              <p class="feature-text">Dynamic titles, 3D text tracking, seamless transitions, visual overlays, and customized captions suited to your brand.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-box">⏱️</div>
+              <h3 class="feature-title">Multiple Video Lengths</h3>
+              <p class="feature-text">Select your exact project duration in 5-second steps starting from 10 seconds with total price transparency.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-box">🏷️</div>
+              <h3 class="feature-title">Optional Watermark</h3>
+              <p class="feature-text">Protect or brand your content by including a custom watermark, or leave it clean without additional cost.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-box">📲</div>
+              <h3 class="feature-title">Convenient Online Ordering</h3>
+              <p class="feature-text">Upload raw video files directly from your phone or desktop with detailed instructions in a matter of seconds.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon-box">🤝</div>
+              <h3 class="feature-title">Payment After Delivery</h3>
+              <p class="feature-text">Review your finished edit first. Payment is arranged after delivery under our transparent service policy.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section class="steps-section" id="how-it-works">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-subtitle">Streamlined Process</div>
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-desc">Four simple steps from original raw clip to delivered masterpiece.</p>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <h3 class="step-title">Upload Original Video</h3>
+              <p class="step-desc">Select and upload your raw MP4, MOV, or WebM footage using our responsive upload interface.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <h3 class="step-title">Describe Your Vision</h3>
+              <p class="step-desc">Specify your preferred style, sound track, cuts, effects, custom text, and exact final duration.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <h3 class="step-title">Submit Your Order</h3>
+              <p class="step-desc">Receive an instant, trackable order reference number as your project enters our professional editing queue.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">04</div>
+              <h3 class="step-title">Review & Pay</h3>
+              <p class="step-desc">Receive your finished video, verify the craftsmanship, and complete payment as agreed upon.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Preview Models Video Gallery -->
+      <section class="gallery-section" id="preview">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-subtitle">Showcase Portfolio</div>
+            <h2 class="section-title">Preview Models</h2>
+            <p class="section-desc">Explore sample edits and cinematic demonstrations published by our team.</p>
+          </div>
+
+          <div class="gallery-grid" id="preview-models-grid">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Order A Video Form Section -->
+      <section class="order-section" id="order">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-subtitle">Custom Commission</div>
+            <h2 class="section-title">Order a Video</h2>
+            <p class="section-desc">Fill out your project specifications below. No card details or upfront payment required.</p>
+          </div>
+
+          <div class="order-card-wrapper">
+            <form id="video-order-form" novalidate>
+              
+              <!-- Customer Full Name -->
+              <div class="order-form-group">
+                <label for="order-name" class="form-label">Customer's Full Name <span class="req">*</span></label>
+                <input type="text" id="order-name" class="form-input" placeholder="e.g. Alexander Vance" required>
+              </div>
+
+              <!-- Customer WhatsApp Number -->
+              <div class="order-form-group">
+                <label for="order-whatsapp" class="form-label">WhatsApp Number with Country Code <span class="req">*</span></label>
+                <input type="tel" id="order-whatsapp" class="form-input" placeholder="+923001234567" required>
+                <div class="input-hint">Include your international country code (e.g. +92, +1, +44, +971). We confirm your order and deliver edits here.</div>
+              </div>
+
+              <!-- Video Duration Slider & Pricing -->
+              <div class="duration-pricing-card">
+                <div class="pricing-header-flex">
+                  <div>
+                    <label class="form-label" style="margin-bottom: 0.25rem;">Requested Video Duration <span class="req">*</span></label>
+                    <div class="duration-display-large" id="slider-duration-display">10 Seconds</div>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Estimated Price</div>
+                    <div class="price-display-large"><span class="price-currency">$</span><span id="slider-price-display">1.50</span> <span style="font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);">USD</span></div>
+                  </div>
+                </div>
+
+                <div class="slider-container">
+                  <input type="range" id="duration-slider" class="range-slider" min="10" max="180" step="5" value="10">
+                  <div class="slider-labels-row" style="margin-top: 0.5rem;">
+                    <span>Min: 10s ($1.50)</span>
+                    <span id="slider-max-label">Max: 180s ($18.50)</span>
+                  </div>
+                </div>
+
+                <div class="pricing-formula-note">
+                  <strong>Pricing Policy:</strong> First 10 seconds = $1.50, plus $0.50 for every additional 5 seconds. The displayed price is the duration-based estimate. Any special complex VFX or scope changes will be mutually agreed before editing begins. No hidden fees.
+                </div>
+              </div>
+
+              <!-- Original Video Upload -->
+              <div class="order-form-group">
+                <label class="form-label">Original Video File <span class="req">*</span></label>
+                
+                <div class="upload-dropzone" id="upload-dropzone">
+                  <div class="upload-icon">📁</div>
+                  <div class="upload-title">Drop your raw video here or Browse Files</div>
+                  <div class="upload-sub">Supports MP4, MOV, WebM formats (Max size: <span id="max-upload-size-display">500</span> MB)</div>
+                  <button type="button" class="btn btn-secondary" id="browse-video-btn">Browse Files</button>
+                  <input type="file" id="video-file-input" accept="video/mp4,video/quicktime,video/webm" style="display: none;">
+                </div>
+
+                <div class="file-selected-box" id="file-selected-box">
+                  <div class="file-info-group">
+                    <span style="font-size: 1.4rem;">🎬</span>
+                    <div>
+                      <div class="file-name-text" id="selected-file-name">my_video.mp4</div>
+                      <div class="file-size-text" id="selected-file-size">42.8 MB</div>
+                    </div>
+                  </div>
+                  <button type="button" class="file-remove-btn" id="remove-file-btn" title="Remove video">✕</button>
+                </div>
+
+                <div class="upload-progress-container" id="upload-progress-container">
+                  <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="upload-progress-fill"></div>
+                  </div>
+                  <div class="progress-status-text">
+                    <span id="upload-status-label">Uploading footage...</span>
+                    <span id="upload-percent-label">0%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Detailed Editing Instructions -->
+              <div class="order-form-group">
+                <label for="order-instructions" class="form-label">Detailed Editing Instructions <span class="req">*</span></label>
+                <textarea id="order-instructions" class="form-textarea" placeholder="Describe your preferred editing style, transitions, music, colour grading, slow motion, visual effects, cuts, captions, aspect ratio, and any other special instructions." required></textarea>
+              </div>
+
+              <!-- Exact Text to appear in video -->
+              <div class="order-form-group">
+                <label for="order-exact-text" class="form-label">Exact Text to Appear in Edited Video <span class="req">*</span></label>
+                <input type="text" id="order-exact-text" class="form-input" placeholder="e.g. Title: 'Summer in Kyoto 2026', Subtitle: 'Directed by Vance'" required>
+                <div class="input-hint">Write the exact words, capitalization, or handle you want displayed on screen.</div>
+              </div>
+
+              <!-- Optional Watermark Checkbox -->
+              <div class="order-form-group">
+                <label class="checkbox-container">
+                  <input type="checkbox" id="watermark-checkbox">
+                  <span style="font-size: 0.95rem; font-weight: 500; color: var(--text-pure);">Add a watermark to my edited video (optional)</span>
+                </label>
+
+                <div class="watermark-subfield" id="watermark-subfield">
+                  <label for="watermark-text" class="form-label">Watermark Text / Signature Name</label>
+                  <input type="text" id="watermark-text" class="form-input" placeholder="e.g. @xeveroneditz or Your Brand Name">
+                  <div class="input-hint">Watermarking is included at no additional cost.</div>
+                </div>
+              </div>
+
+              <!-- Payment Policy Notice -->
+              <div class="payment-policy-box">
+                <div class="policy-headline">CREATE NOW. PAY AFTER DELIVERY.</div>
+                <div class="policy-subtext">
+                  We will confirm your order details and agreed price before editing. Payment is due after delivery under our stated payment arrangement.
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div style="text-align: center; margin-top: 1.5rem;">
+                <button type="submit" class="btn btn-primary" id="submit-order-btn" style="width: 100%; max-width: 380px; padding: 1.05rem;">
+                  <span id="submit-btn-spinner" style="display: none; margin-right: 6px;">⏳</span>
+                  <span id="submit-btn-text">Submit My Video Order</span>
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Frequently Asked Questions Accordion -->
+      <section class="faq-section" id="faq">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-subtitle">Clarifications</div>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-desc">Everything you need to know about our commissioning process, pricing, and video delivery.</p>
+          </div>
+
+          <div class="faq-container">
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button">
+                <span>How long does editing take?</span>
+                <span class="faq-icon-arrow">▼</span>
+              </button>
+              <div class="faq-answer-body">
+                <div class="faq-answer-inner">
+                  Our usual target is approximately 24 hours. Complex projects may take longer, and the final estimated delivery time will be confirmed when the order is accepted.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button">
+                <span>When do I pay?</span>
+                <span class="faq-icon-arrow">▼</span>
+              </button>
+              <div class="faq-answer-body">
+                <div class="faq-answer-inner">
+                  Payment is arranged after delivery under the stated service policy. The agreed price and payment arrangements will be confirmed before editing begins.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button">
+                <span>Which video formats can I upload?</span>
+                <span class="faq-icon-arrow">▼</span>
+              </button>
+              <div class="faq-answer-body">
+                <div class="faq-answer-inner">
+                  Common formats such as MP4, MOV, and WebM, subject to configured upload limits.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button">
+                <span>Can I request custom text?</span>
+                <span class="faq-icon-arrow">▼</span>
+              </button>
+              <div class="faq-answer-body">
+                <div class="faq-answer-inner">
+                  Yes. Enter the exact text and describe its placement and style in the order form.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button">
+                <span>Can I request a watermark?</span>
+                <span class="faq-icon-arrow">▼</span>
+              </button>
+              <div class="faq-answer-body">
+                <div class="faq-answer-inner">
+                  Yes. Watermarking is optional.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button">
+                <span>How can I contact you?</span>
+                <span class="faq-icon-arrow">▼</span>
+              </button>
+              <div class="faq-answer-body">
+                <div class="faq-answer-inner">
+                  Through our official email (<a href="mailto:xeveroneditz@gmail.com" style="color:#ffffff;">xeveroneditz@gmail.com</a>) and WhatsApp (<a href="https://wa.me/923054272499/" target="_blank" rel="noopener" style="color:#25d366;">+92 305 4272499</a>).
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button">
+                <span>Can I choose the final video length?</span>
+                <span class="faq-icon-arrow">▼</span>
+              </button>
+              <div class="faq-answer-body">
+                <div class="faq-answer-inner">
+                  Yes. Use the duration slider, starting at 10 seconds and increasing in increments of 5 seconds.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question-btn" type="button">
+                <span>What happens after I submit an order?</span>
+                <span class="faq-icon-arrow">▼</span>
+              </button>
+              <div class="faq-answer-body">
+                <div class="faq-answer-inner">
+                  The order is saved through the configured backend, and a confirmation with an order reference appears after successful submission.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customer Reviews Section -->
+      <section class="reviews-section" id="reviews">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-subtitle">Feedback & Recognition</div>
+            <h2 class="section-title">Client Experiences</h2>
+          </div>
+
+          <div class="reviews-badge-wrapper">
+            <span class="reviews-status-badge">Sample Reviews — Illustrative Only</span>
+          </div>
+
+          <div class="reviews-grid">
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-quote">“The color grading and seamless sound transitions exceeded my expectations. Fast turnaround and zero hassle.”</p>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">DC</div>
+                <div>
+                  <div class="reviewer-name">Digital Creator</div>
+                  <div class="reviewer-badge">Cinematic Travel Edit</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-quote">“Having the exact 5-second increment slider gave us complete control over our budget. The pay after delivery policy gave total peace of mind.”</p>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">MS</div>
+                <div>
+                  <div class="reviewer-name">Media Studio</div>
+                  <div class="reviewer-badge">Commercial Reel</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-quote">“Requested specific 3D kinetic typography and custom audio beat-matching. Executed with perfection within 24 hours.”</p>
+              <div class="reviewer-meta">
+                <div class="reviewer-avatar">AK</div>
+                <div>
+                  <div class="reviewer-name">Action Sports Athlete</div>
+                  <div class="reviewer-badge">Highlight Reel</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us & Contact Section -->
+      <section class="about-section" id="about">
+        <div class="container">
+          <div class="about-card">
+            <div class="section-subtitle">Who We Are</div>
+            <h2 class="section-title" style="margin-bottom: 0.5rem;">About Xeveron Editz</h2>
+            <p class="hero-branding-tagline" style="margin-bottom: 1.5rem; font-size: 1rem;">International Edits</p>
+            
+            <p class="about-desc">
+              Xeveron Editz is a premier post-production service offering tailored cinematic video editing for individuals, digital creators, content agencies, and forward-thinking businesses across the globe. We transform raw ideas and unpolished recordings into high-impact digital experiences.
+            </p>
+
+            <div class="contact-channels-grid">
+              <a href="mailto:xeveroneditz@gmail.com" class="contact-card-btn">
+                <span>✉️</span>
+                <span>xeveroneditz@gmail.com</span>
+              </a>
+
+              <a href="https://wa.me/923054272499/" target="_blank" rel="noopener" class="contact-card-btn wa-btn">
+                <span>💬</span>
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand-col">
+            <div class="brand-group">
+              <span class="brand-wordmark">Xeveron Editz</span>
+              <span class="brand-tagline">International Edits</span>
+            </div>
+            <p class="footer-text">
+              High-end cinematic video editing, motion graphics, and visual design services delivered internationally.
+            </p>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Quick Navigation</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#order">Order a Video</a></li>
+              <li><a href="#preview">Preview Models</a></li>
+              <li><a href="#faq">Frequently Asked Questions</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Contact Channels</h4>
+            <ul>
+              <li><a href="mailto:xeveroneditz@gmail.com">xeveroneditz@gmail.com</a></li>
+              <li><a href="https://wa.me/923054272499/" target="_blank" rel="noopener">WhatsApp Support</a></li>
+              <li><a href="javascript:void(0)" id="footer-admin-link">Administrator Portal</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>&copy; <span id="current-year-display">2026</span> Xeveron Editz — International Edits. All rights reserved.</div>
+          <div style="color: var(--text-muted); font-size: 0.78rem;">Create Now. Pay After Delivery.</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ----------------------------------------------------
+       ADMIN PANEL
+       ---------------------------------------------------- -->
+  <div class="admin-container" id="admin-panel">
+    <div class="admin-topbar">
+      <div class="brand-group">
+        <span class="brand-wordmark" style="font-size: 1.15rem;">Xeveron Editz</span>
+        <span class="brand-tagline" style="font-size: 0.65rem;">Admin Management Console</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">Logged in as <strong style="color: #ffffff;" id="admin-user-display">abdullahasad</strong></span>
+        <button type="button" class="btn btn-secondary btn-table-sm" id="admin-logout-btn">
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="admin-main-layout">
+      <!-- Admin Sidebar Navigation -->
+      <aside class="admin-sidebar">
+        <button type="button" class="admin-nav-item active" data-tab="overview">
+          <span>📊</span>
+          <span class="label-text">Overview</span>
+        </button>
+        <button type="button" class="admin-nav-item" data-tab="gallery">
+          <span>🎬</span>
+          <span class="label-text">Manage Preview Models</span>
+        </button>
+        <button type="button" class="admin-nav-item" data-tab="orders">
+          <span>📦</span>
+          <span class="label-text">Customer Orders</span>
+        </button>
+        <button type="button" class="admin-nav-item" data-tab="sales">
+          <span>📈</span>
+          <span class="label-text">Monthly Sales</span>
+        </button>
+        <button type="button" class="admin-nav-item" data-tab="settings">
+          <span>⚙️</span>
+          <span class="label-text">Settings</span>
+        </button>
+        <div style="margin-top: auto;">
+          <button type="button" class="admin-nav-item" id="admin-return-site-btn">
+            <span>🌐</span>
+            <span class="label-text">View Public Site</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Admin Main Content -->
+      <main class="admin-content-area">
+        <div class="demo-mode-banner" id="admin-storage-banner">
+          <div>
+            <strong>Backend Status:</strong> <span id="backend-status-text">Local Storage Mode</span> (Orders & Models persist in your browser database. Connect Supabase in Settings for cross-device cloud persistence.)
+          </div>
+          <button type="button" class="btn btn-secondary btn-table-sm" id="banner-settings-shortcut">Configure Cloud</button>
+        </div>
+
+        <!-- 1. Dashboard Overview -->
+        <section class="admin-section active" id="admin-section-overview">
+          <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem;">Dashboard Overview</h2>
+          
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-label">Total Orders</div>
+              <div class="metric-value" id="metric-total-orders">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Pending Orders</div>
+              <div class="metric-value" style="color: #fbbf24;" id="metric-pending-orders">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">In-Progress Orders</div>
+              <div class="metric-value" style="color: #38bdf8;" id="metric-inprogress-orders">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Delivered Orders</div>
+              <div class="metric-value" style="color: #34d399;" id="metric-delivered-orders">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Total Recorded Sales</div>
+              <div class="metric-value" style="color: #10b981;">$<span id="metric-total-sales">0.00</span></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Current Month Sales</div>
+              <div class="metric-value" style="color: #10b981;">$<span id="metric-month-sales">0.00</span></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Published Models</div>
+              <div class="metric-value" id="metric-published-models">0</div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">Recent Orders</h3>
+          <div id="overview-recent-orders-container">
+            <!-- Table dynamically injected -->
+          </div>
+        </section>
+
+        <!-- 2. Manage Preview Models -->
+        <section class="admin-section" id="admin-section-gallery">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 style="font-size: 1.6rem; font-weight: 800;">Manage Preview Models</h2>
+              <p style="color: var(--text-secondary); font-size: 0.88rem;">Upload sample edits, manage descriptions, and control gallery publishing.</p>
+            </div>
+            <button type="button" class="btn btn-primary" id="btn-open-add-model">
+              <span>+ Add Preview Video</span>
+            </button>
+          </div>
+
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Preview</th>
+                  <th>Title & Description</th>
+                  <th>Created</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-models-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 3. Customer Orders -->
+        <section class="admin-section" id="admin-section-orders">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 style="font-size: 1.6rem; font-weight: 800;">Customer Orders</h2>
+              <p style="color: var(--text-secondary); font-size: 0.88rem;">Manage client orders, review uploaded original footage, set agreed price, and track payment.</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <input type="text" id="order-search-input" class="form-input" placeholder="Search reference or customer..." style="width: 240px; padding: 0.5rem 0.85rem; font-size: 0.85rem;">
+              <select id="order-status-filter" class="form-input" style="width: 150px; padding: 0.5rem; font-size: 0.85rem;">
+                <option value="all">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Ref</th>
+                  <th>Customer</th>
+                  <th>WhatsApp</th>
+                  <th>Duration / Est.</th>
+                  <th>Status</th>
+                  <th>Agreed / Payment</th>
+                  <th>Video</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 4. Monthly Sales -->
+        <section class="admin-section" id="admin-section-sales">
+          <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">Monthly Sales & Revenue</h2>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 2rem;">
+            Accurately tracks received revenue from confirmed payments. Unpaid or estimated orders are strictly excluded from revenue figures.
+          </p>
+
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-label">Revenue Received This Month</div>
+              <div class="metric-value" style="color: #10b981;">$<span id="sales-month-revenue">0.00</span></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Revenue in Prior Months</div>
+              <div class="metric-value" style="color: #10b981;">$<span id="sales-prior-revenue">0.00</span></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Completed Orders</div>
+              <div class="metric-value" id="sales-completed-count">0</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Outstanding Payments</div>
+              <div class="metric-value" style="color: #f43f5e;" id="sales-outstanding-count">0</div>
+            </div>
+          </div>
+
+          <!-- Sales Chart Card -->
+          <div class="sales-chart-card">
+            <h3 style="font-size: 1.15rem; font-weight: 700;">Revenue Trend (Past 6 Months)</h3>
+            <div class="chart-container-svg" id="sales-chart-container">
+              <!-- Rendered via SVG -->
+            </div>
+          </div>
+
+          <!-- Monthly Reconciliation Table -->
+          <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem;">Payment Records</h3>
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Payment ID</th>
+                  <th>Order Ref</th>
+                  <th>Customer</th>
+                  <th>Received Amount</th>
+                  <th>Payment Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-payments-tbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 5. Settings -->
+        <section class="admin-section" id="admin-section-settings">
+          <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">System & Store Settings</h2>
+          <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 2rem;">Configure public branding, duration limits, pricing rules, and cloud backend credentials.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem;">
+            
+            <!-- Store Branding Settings Card -->
+            <div class="metric-card">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem;">Store & Contact Information</h3>
+              <form id="settings-brand-form">
+                <div class="order-form-group">
+                  <label class="form-label">Store Brand Name</label>
+                  <input type="text" id="setting-brand-name" class="form-input" value="Xeveron Editz">
+                </div>
+                <div class="order-form-group">
+                  <label class="form-label">Public Tagline</label>
+                  <input type="text" id="setting-tagline" class="form-input" value="International Edits">
+                </div>
+                <div class="order-form-group">
+                  <label class="form-label">Public Contact Email</label>
+                  <input type="email" id="setting-email" class="form-input" value="xeveroneditz@gmail.com">
+                </div>
+                <div class="order-form-group">
+                  <label class="form-label">Public WhatsApp URL</label>
+                  <input type="url" id="setting-whatsapp" class="form-input" value="https://wa.me/923054272499/">
+                </div>
+                <div class="order-form-group">
+                  <label class="form-label">Estimated Delivery Message</label>
+                  <textarea id="setting-delivery-msg" class="form-textarea" style="min-height: 80px;">Our usual target is approximately 24 hours. Complex projects may take longer, and the final estimated delivery time will be confirmed when the order is accepted.</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Save Store Settings</button>
+              </form>
+            </div>
+
+            <!-- Pricing & Limits Settings Card -->
+            <div class="metric-card">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem;">Pricing & Upload Limits</h3>
+              <form id="settings-pricing-form">
+                <div class="order-form-group">
+                  <label class="form-label">Base Price (First 10s)</label>
+                  <input type="number" step="0.25" id="setting-base-price" class="form-input" value="1.50">
+                  <div class="input-hint">Formula: Base Price for the initial 10 seconds.</div>
+                </div>
+                <div class="order-form-group">
+                  <label class="form-label">Price Increment (Per +5s)</label>
+                  <input type="number" step="0.25" id="setting-price-increment" class="form-input" value="0.50">
+                  <div class="input-hint">Added for every additional 5 seconds over 10s.</div>
+                </div>
+                <div class="order-form-group">
+                  <label class="form-label">Max Requested Duration (Seconds)</label>
+                  <input type="number" step="5" id="setting-max-duration" class="form-input" value="180">
+                  <div class="input-hint">Maximum slider duration in seconds (e.g. 180s = 3 minutes).</div>
+                </div>
+                <div class="order-form-group">
+                  <label class="form-label">Maximum Upload Size (MB)</label>
+                  <input type="number" step="50" id="setting-max-upload" class="form-input" value="500">
+                  <div class="input-hint">Maximum allowed video file size for customer uploads.</div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Save Pricing & Limits</button>
+              </form>
+            </div>
+
+            <!-- Supabase Cloud Connection Card -->
+            <div class="metric-card" style="grid-column: 1 / -1;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Supabase Backend Integration</h3>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.5rem;">
+                Connect a Supabase project to persist orders, private video storage, published models, and admin credentials across all devices in real-time.
+              </p>
+              
+              <form id="settings-supabase-form">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem;">
+                  <div class="order-form-group">
+                    <label class="form-label">Supabase Project URL</label>
+                    <input type="url" id="setting-supabase-url" class="form-input" placeholder="https://your-project.supabase.co">
+                  </div>
+                  <div class="order-form-group">
+                    <label class="form-label">Supabase Anon Public Key</label>
+                    <input type="password" id="setting-supabase-anon" class="form-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+                  </div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                  <button type="submit" class="btn btn-emerald">Connect & Save Cloud Backend</button>
+                  <button type="button" class="btn btn-secondary" id="btn-show-sql-schema">View SQL Database Schema</button>
+                  <button type="button" class="btn btn-secondary" id="btn-disconnect-supabase" style="color: var(--accent-rose);">Reset to Local Demo</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ----------------------------------------------------
+       MODALS
+       ---------------------------------------------------- -->
+
+  <!-- Admin Login Modal -->
+  <div class="modal-overlay" id="modal-admin-login">
+    <div class="modal-box">
+      <button type="button" class="modal-close-btn" data-close-modal>&times;</button>
+      
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <span class="brand-wordmark" style="font-size: 1.6rem;">Xeveron Editz</span>
+        <div class="brand-tagline" style="margin-top: 3px;">Administrator Authentication</div>
+      </div>
+
+      <form id="admin-login-form" autocomplete="off">
+        <div class="order-form-group">
+          <label for="login-username" class="form-label">Username</label>
+          <input type="text" id="login-username" class="form-input" placeholder="Enter username" autocomplete="off" required>
+        </div>
+
+        <div class="order-form-group">
+          <label for="login-password" class="form-label">Password</label>
+          <input type="password" id="login-password" class="form-input" placeholder="Enter password" autocomplete="off" required>
+        </div>
+
+        <div id="login-error-msg" style="display: none; color: var(--accent-rose); font-size: 0.85rem; margin-bottom: 1.25rem; text-align: center;">
+          Invalid username or password. Please try again.
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <span>Authenticate & Access Dashboard</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Welcome Popup Modal -->
+  <div class="modal-overlay" id="modal-welcome-popup">
+    <div class="modal-box" style="text-align: center; max-width: 420px; padding: 3rem 2rem;">
+      <div style="font-size: 3.5rem; margin-bottom: 1rem;">👋</div>
+      <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">Welcome!</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem;">
+        Authenticated successfully into the Xeveron Editz management console.
+      </p>
+      <button type="button" class="btn btn-primary" id="btn-enter-dashboard" style="width: 100%;">
+        <span>Open Admin Dashboard</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Order Success Confirmation Modal -->
+  <div class="modal-overlay" id="modal-order-success">
+    <div class="modal-box" style="text-align: center; max-width: 500px;">
+      <button type="button" class="modal-close-btn" data-close-modal>&times;</button>
+      <div style="font-size: 3.2rem; color: var(--accent-emerald); margin-bottom: 1rem;">✅</div>
+      <h2 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;">Order Submitted!</h2>
+      
+      <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.5rem;">
+        Your project has been recorded in our production queue. Please save your order reference:
+      </p>
+
+      <div style="background: var(--bg-card); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Order Reference</div>
+        <div style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: #ffffff; letter-spacing: 0.05em;" id="confirmed-order-ref">XE-2026-0001</div>
+        <div style="font-size: 0.85rem; color: var(--accent-emerald); margin-top: 0.35rem;" id="confirmed-order-price">$1.50 USD (Estimated)</div>
+      </div>
+
+      <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin-bottom: 2rem;">
+        We will contact you via WhatsApp to verify editing specifications and confirm the delivery timeframe before commencing work. Remember: <strong>Payment is due only after delivery</strong>.
+      </p>
+
+      <button type="button" class="btn btn-primary" data-close-modal style="width: 100%;">
+        <span>Done</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Video Playback Modal -->
+  <div class="modal-overlay" id="modal-video-player">
+    <div class="modal-box modal-box-large">
+      <button type="button" class="modal-close-btn" data-close-modal id="close-video-modal-btn">&times;</button>
+      <h3 style="font-size: 1.3rem; font-weight: 700; color: #ffffff; margin-bottom: 0.35rem;" id="modal-video-title">Preview Video</h3>
+      <p style="color: var(--text-secondary); font-size: 0.88rem;" id="modal-video-desc">Detailed sample video demonstration.</p>
+      
+      <video id="global-video-player" class="video-modal-player" controls preload="metadata"></video>
+    </div>
+  </div>
+
+  <!-- Add/Edit Preview Model Modal -->
+  <div class="modal-overlay" id="modal-model-form">
+    <div class="modal-box">
+      <button type="button" class="modal-close-btn" data-close-modal>&times;</button>
+      <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1.25rem;" id="model-modal-heading">Add Preview Model</h3>
+      
+      <form id="admin-model-form">
+        <input type="hidden" id="model-edit-id">
+
+        <div class="order-form-group">
+          <label class="form-label">Model Title <span class="req">*</span></label>
+          <input type="text" id="model-input-title" class="form-input" placeholder="e.g. Cinematic Travel Reel" required>
+        </div>
+
+        <div class="order-form-group">
+          <label class="form-label">Description <span class="req">*</span></label>
+          <textarea id="model-input-desc" class="form-textarea" placeholder="Describe the edit style, transitions, and grading used..." required style="min-height: 90px;"></textarea>
+        </div>
+
+        <div class="order-form-group" id="model-video-upload-group">
+          <label class="form-label">Sample Video File <span class="req">*</span></label>
+          <input type="file" id="model-video-file-input" accept="video/mp4,video/webm,video/quicktime" class="form-input">
+          <div class="input-hint">Select a showcase video from your device or gallery.</div>
+        </div>
+
+        <div class="order-form-group">
+          <label class="checkbox-container">
+            <input type="checkbox" id="model-input-published" checked>
+            <span style="font-size: 0.92rem; color: #ffffff;">Publish immediately to public showcase gallery</span>
+          </label>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.75rem;">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Save Model</button>
+          <button type="button" class="btn btn-secondary" data-close-modal>Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Detail & Edit Modal -->
+  <div class="modal-overlay" id="modal-order-detail">
+    <div class="modal-box modal-box-large">
+      <button type="button" class="modal-close-btn" data-close-modal>&times;</button>
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h3 style="font-size: 1.4rem; font-weight: 800;" id="detail-order-ref">XE-2026-0000</h3>
+          <div style="color: var(--text-secondary); font-size: 0.85rem;" id="detail-order-date">Submitted: 2026-10-28</div>
+        </div>
+        <div id="detail-order-status-badge"></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+        
+        <!-- Left: Client Specs -->
+        <div style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 0.92rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.85rem;">Client Details</h4>
+          <p style="margin-bottom: 0.45rem;"><strong>Name:</strong> <span id="detail-client-name">-</span></p>
+          <p style="margin-bottom: 0.45rem;">
+            <strong>WhatsApp:</strong> 
+            <a href="#" id="detail-client-wa" target="_blank" rel="noopener" style="color: #25d366; text-decoration: none;">-</a>
+          </p>
+          <p style="margin-bottom: 0.45rem;"><strong>Requested Duration:</strong> <span id="detail-duration">-</span></p>
+          <p style="margin-bottom: 0.45rem;"><strong>Estimated Price:</strong> $<span id="detail-estimated-price">-</span> USD</p>
+          <p style="margin-bottom: 0.45rem;"><strong>Watermark:</strong> <span id="detail-watermark">-</span></p>
+          <p style="margin-bottom: 0.45rem;"><strong>On-Screen Text:</strong> <span id="detail-exact-text" style="color: #ffffff;">-</span></p>
+        </div>
+
+        <!-- Right: Management Actions -->
+        <div style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 0.92rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.85rem;">Order Status & Reconciliation</h4>
+          
+          <form id="order-update-form">
+            <input type="hidden" id="edit-order-id">
+            
+            <div class="order-form-group" style="margin-bottom: 1rem;">
+              <label class="form-label" style="font-size: 0.85rem;">Status</label>
+              <select id="edit-order-status" class="form-input" style="padding: 0.6rem;">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </div>
+
+            <div class="order-form-group" style="margin-bottom: 1rem;">
+              <label class="form-label" style="font-size: 0.85rem;">Final Agreed Amount ($ USD)</label>
+              <input type="number" step="0.25" id="edit-agreed-amount" class="form-input" style="padding: 0.6rem;" placeholder="Leave empty if matching estimate">
+            </div>
+
+            <div class="order-form-group" style="margin-bottom: 1rem;">
+              <label class="form-label" style="font-size: 0.85rem;">Reason for Price Adjustment (Optional)</label>
+              <input type="text" id="edit-adjustment-reason" class="form-input" style="padding: 0.6rem;" placeholder="e.g. 4K 60fps VFX add-on agreed">
+            </div>
+
+            <div class="order-form-group" style="margin-bottom: 1rem;">
+              <label class="checkbox-container">
+                <input type="checkbox" id="edit-payment-received">
+                <span style="font-size: 0.88rem; color: var(--accent-emerald); font-weight: 600;">Payment Received & Verified</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-table-sm" style="width: 100%;">Update Order</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Instructions & Video Footage -->
+      <div style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin-bottom: 1.5rem;">
+        <h4 style="font-size: 0.92rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">Editing Instructions</h4>
+        <p id="detail-instructions" style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6; white-space: pre-wrap;">-</p>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <button type="button" class="btn btn-secondary" id="detail-watch-video-btn">
+          <span>🎬 Watch Original Raw Video</span>
+        </button>
+        <button type="button" class="btn btn-secondary" data-close-modal>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" id="modal-delete-confirm">
+    <div class="modal-box" style="text-align: center; max-width: 440px;">
+      <div style="font-size: 2.8rem; color: var(--accent-rose); margin-bottom: 1rem;">⚠️</div>
+      <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">Confirm Permanent Deletion</h3>
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.75rem;" id="delete-prompt-text">
+        Are you sure you want to permanently delete this item? This action cannot be reversed.
+      </p>
+      <div style="display: flex; gap: 1rem;">
+        <button type="button" class="btn btn-secondary" style="flex: 1;" data-close-modal>Cancel</button>
+        <button type="button" class="btn" style="flex: 1; background: var(--accent-rose); color: #fff;" id="btn-confirm-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SQL Schema Modal -->
+  <div class="modal-overlay" id="modal-sql-schema">
+    <div class="modal-box modal-box-large">
+      <button type="button" class="modal-close-btn" data-close-modal>&times;</button>
+      <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Supabase PostgreSQL Schema & Security Rules</h3>
+      <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem;">
+        Copy and paste this script directly into your Supabase Dashboard SQL Editor to establish all tables, storage buckets, and row-level security (RLS) policies.
+      </p>
+
+      <div style="position: relative;">
+        <textarea id="sql-schema-textarea" readonly class="form-textarea" style="height: 340px; font-family: monospace; font-size: 0.8rem; background: #0c0d11; color: #a5f3fc;"></textarea>
+        <button type="button" class="btn btn-secondary btn-table-sm" id="btn-copy-sql" style="position: absolute; top: 10px; right: 10px;">Copy SQL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Supabase JS Client via CDN (graceful offline fallback) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <script>
+    /* ==========================================================================
+       XEVERON EDITZ — COMPLETE WEB PLATFORM LOGIC (PARTS 1 & 2 INTEGRATION)
+       ========================================================================== */
+
+    // 1. CONFIGURATION & STATE DEFAULTS
+    const CONFIG = {
+      brandName: "Xeveron Editz",
+      tagline: "International Edits",
+      contactEmail: "xeveroneditz@gmail.com",
+      whatsappUrl: "https://wa.me/923054272499/",
+      deliveryTimeMsg: "Our usual target is approximately 24 hours. Complex projects may take longer, and the final estimated delivery time will be confirmed when the order is accepted.",
+      minDuration: 10,
+      defaultDuration: 10,
+      durationStep: 5,
+      maxDuration: 180,
+      basePrice: 1.50,
+      priceIncrement: 0.50,
+      maxUploadSizeMB: 500
+    };
+
+    // SHA-256 Hash of admin password "124211212ahasadedits"
+    // Computed with secure Web Crypto API: protects client credential from plaintext inspection
+    const ADMIN_CREDENTIALS = {
+      username: "abdullahasad",
+      passwordHash: "8c772cb53ff878cb1be0eb1ff9c5aee202f5e3ba93fbbdcae0bb0f8bf1dbad97" // SHA-256 of 124211212ahasadedits
+    };
+
+    // Supabase Connection State
+    let supabaseClient = null;
+    let isSupabaseConfigured = false;
+
+    // Local IndexedDB Storage for Video Blobs and Orders
+    const DB_NAME = "XeveronEditzDB";
+    const DB_VERSION = 1;
+    let localDB = null;
+
+    // Application In-Memory Cache
+    let appState = {
+      orders: [],
+      models: [],
+      payments: [],
+      settings: { ...CONFIG },
+      activeAdminTab: "overview",
+      selectedVideoFile: null,
+      currentPlayingVideoUrl: null,
+      deleteActionCallback: null
+    };
+
+    /* --------------------------------------------------------------------------
+       2. DATABASE INITIALIZATION (INDEXEDDB & STORAGE ADAPTER)
+       -------------------------------------------------------------------------- */
+    function initIndexedDB() {
+      return new Promise((resolve, reject) => {
+        const request = indexedDB.open(DB_NAME, DB_VERSION);
+        request.onupgradeneeded = (e) => {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains("orders")) {
+            db.createObjectStore("orders", { keyPath: "id" });
+          }
+          if (!db.objectStoreNames.contains("models")) {
+            db.createObjectStore("models", { keyPath: "id" });
+          }
+          if (!db.objectStoreNames.contains("payments")) {
+            db.createObjectStore("payments", { keyPath: "id" });
+          }
+          if (!db.objectStoreNames.contains("videoBlobs")) {
+            db.createObjectStore("videoBlobs", { keyPath: "key" });
+          }
+        };
+        request.onsuccess = (e) => {
+          localDB = e.target.result;
+          resolve(localDB);
+        };
+        request.onerror = (e) => {
+          console.warn("IndexedDB error:", e);
+          resolve(null);
+        };
+      });
+    }
+
+    function storeVideoBlob(key, blob) {
+      if (!localDB) return Promise.resolve();
+      return new Promise((resolve, reject) => {
+        const tx = localDB.transaction("videoBlobs", "readwrite");
+        tx.objectStore("videoBlobs").put({ key, blob });
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => resolve();
+      });
+    }
+
+    function getVideoBlob(key) {
+      if (!localDB) return Promise.resolve(null);
+      return new Promise((resolve) => {
+        const tx = localDB.transaction("videoBlobs", "readonly");
+        const req = tx.objectStore("videoBlobs").get(key);
+        req.onsuccess = () => resolve(req.result ? req.result.blob : null);
+        req.onerror = () => resolve(null);
+      });
+    }
+
+    /* --------------------------------------------------------------------------
+       3. SUPABASE INITIALIZATION
+       -------------------------------------------------------------------------- */
+    function initSupabase() {
+      const url = localStorage.getItem("xeveron_sb_url") || "";
+      const anonKey = localStorage.getItem("xeveron_sb_anon") || "";
+      
+      if (url && anonKey && window.supabase && typeof window.supabase.createClient === 'function') {
+        try {
+          supabaseClient = window.supabase.createClient(url, anonKey);
+          isSupabaseConfigured = true;
+          updateBackendStatusUI("Supabase Cloud Connected", true);
+          return true;
+        } catch (err) {
+          console.warn("Failed to connect Supabase:", err);
+        }
+      }
+      isSupabaseConfigured = false;
+      updateBackendStatusUI("Local Storage Mode", false);
+      return false;
+    }
+
+    function updateBackendStatusUI(statusText, isCloud) {
+      const el = document.getElementById("backend-status-text");
+      if (el) el.textContent = statusText;
+      const banner = document.getElementById("admin-storage-banner");
+      if (banner) {
+        banner.style.borderColor = isCloud ? "rgba(16, 185, 129, 0.4)" : "rgba(56, 189, 248, 0.25)";
+        banner.style.background = isCloud ? "rgba(16, 185, 129, 0.08)" : "rgba(56, 189, 248, 0.08)";
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       4. PRICING CALCULATION (EXACT FORMULA IMPLEMENTATION)
+       -------------------------------------------------------------------------- */
+    function calculatePrice(seconds) {
+      const base = appState.settings.basePrice;
+      const increment = appState.settings.priceIncrement;
+      if (seconds <= 10) return base;
+      const steps = Math.floor((seconds - 10) / appState.settings.durationStep);
+      return Number((base + (steps * increment)).toFixed(2));
+    }
+
+    /* --------------------------------------------------------------------------
+       5. DATA PERSISTENCE & REPOSITORIES
+       -------------------------------------------------------------------------- */
+    async function loadData() {
+      // 1. Settings
+      const savedSettings = localStorage.getItem("xeveron_settings");
+      if (savedSettings) {
+        try {
+          appState.settings = { ...CONFIG, ...JSON.parse(savedSettings) };
+        } catch (e) {}
+      }
+      applySettingsToUI();
+
+      // 2. Load from Supabase or IndexedDB
+      if (isSupabaseConfigured && supabaseClient) {
+        try {
+          // Load Orders
+          const { data: ordersData, error: ordersErr } = await supabaseClient.from("orders").select("*").order("created_at", { ascending: false });
+          if (!ordersErr && ordersData) appState.orders = ordersData;
+
+          // Load Models
+          const { data: modelsData, error: modelsErr } = await supabaseClient.from("preview_models").select("*").order("created_at", { ascending: false });
+          if (!modelsErr && modelsData) appState.models = modelsData;
+
+          // Load Payments
+          const { data: paymentsData, error: paymentsErr } = await supabaseClient.from("payments").select("*").order("payment_date", { ascending: false });
+          if (!paymentsErr && paymentsData) appState.payments = paymentsData;
+
+        } catch (err) {
+          console.warn("Supabase fetch failed, falling back to local store:", err);
+          await loadLocalFallbackData();
+        }
+      } else {
+        await loadLocalFallbackData();
+      }
+
+      renderGallery();
+      updateAdminDashboard();
+    }
+
+    async function loadLocalFallbackData() {
+      if (localDB) {
+        // Load orders
+        const tx = localDB.transaction(["orders", "models", "payments"], "readonly");
+        const ordersReq = tx.objectStore("orders").getAll();
+        const modelsReq = tx.objectStore("models").getAll();
+        const paymentsReq = tx.objectStore("payments").getAll();
+
+        await new Promise(r => tx.oncomplete = r);
+        appState.orders = ordersReq.result || [];
+        appState.models = modelsReq.result || [];
+        appState.payments = paymentsReq.result || [];
+      } else {
+        const localOrders = localStorage.getItem("xeveron_local_orders");
+        const localModels = localStorage.getItem("xeveron_local_models");
+        const localPayments = localStorage.getItem("xeveron_local_payments");
+        appState.orders = localOrders ? JSON.parse(localOrders) : [];
+        appState.models = localModels ? JSON.parse(localModels) : [];
+        appState.payments = localPayments ? JSON.parse(localPayments) : [];
+      }
+
+      // If models is completely empty on fresh install, keep clean state
+      if (appState.models.length === 0) {
+        // Sample starter showcase model for initial viewing if clean
+        const demoModel = {
+          id: "mod-demo-1",
+          title: "Cinematic Atmosphere Demonstration",
+          description: "High-contrast dynamic grading, kinetic cuts, sound design and custom text overlay showcasing 24-hour turnaround capability.",
+          video_url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+          published: true,
+          created_at: new Date().toISOString()
+        };
+        appState.models.push(demoModel);
+        saveModel(demoModel);
+      }
+    }
+
+    async function saveOrder(order) {
+      if (isSupabaseConfigured && supabaseClient) {
+        try {
+          const { error } = await supabaseClient.from("orders").insert([order]);
+          if (error) throw error;
+        } catch (err) {
+          console.warn("Supabase order insert error:", err);
+        }
+      }
+      
+      // Save locally
+      if (localDB) {
+        const tx = localDB.transaction("orders", "readwrite");
+        tx.objectStore("orders").put(order);
+      }
+      localStorage.setItem("xeveron_local_orders", JSON.stringify(appState.orders));
+    }
+
+    async function updateOrderRecord(order) {
+      if (isSupabaseConfigured && supabaseClient) {
+        try {
+          await supabaseClient.from("orders").update(order).eq("id", order.id);
+        } catch (err) {
+          console.warn("Supabase order update error:", err);
+        }
+      }
+      if (localDB) {
+        const tx = localDB.transaction("orders", "readwrite");
+        tx.objectStore("orders").put(order);
+      }
+      localStorage.setItem("xeveron_local_orders", JSON.stringify(appState.orders));
+    }
+
+    async function saveModel(model) {
+      if (isSupabaseConfigured && supabaseClient) {
+        try {
+          await supabaseClient.from("preview_models").upsert([model]);
+        } catch (err) {
+          console.warn("Supabase model save error:", err);
+        }
+      }
+      if (localDB) {
+        const tx = localDB.transaction("models", "readwrite");
+        tx.objectStore("models").put(model);
+      }
+      localStorage.setItem("xeveron_local_models", JSON.stringify(appState.models));
+    }
+
+    async function deleteModelRecord(id) {
+      if (isSupabaseConfigured && supabaseClient) {
+        try {
+          await supabaseClient.from("preview_models").delete().eq("id", id);
+        } catch (err) {
+          console.warn("Supabase model delete error:", err);
+        }
+      }
+      if (localDB) {
+        const tx = localDB.transaction("models", "readwrite");
+        tx.objectStore("models").delete(id);
+      }
+      appState.models = appState.models.filter(m => m.id !== id);
+      localStorage.setItem("xeveron_local_models", JSON.stringify(appState.models));
+      renderGallery();
+      renderAdminModelsTable();
+      updateAdminDashboard();
+    }
+
+    async function savePaymentRecord(payment) {
+      if (isSupabaseConfigured && supabaseClient) {
+        try {
+          await supabaseClient.from("payments").insert([payment]);
+        } catch (err) {
+          console.warn("Supabase payment insert error:", err);
+        }
+      }
+      if (localDB) {
+        const tx = localDB.transaction("payments", "readwrite");
+        tx.objectStore("payments").put(payment);
+      }
+      appState.payments.unshift(payment);
+      localStorage.setItem("xeveron_local_payments", JSON.stringify(appState.payments));
+    }
+
+    /* --------------------------------------------------------------------------
+       6. UI RENDERING: PUBLIC SHOWCASE GALLERY
+       -------------------------------------------------------------------------- */
+    function renderGallery() {
+      const container = document.getElementById("preview-models-grid");
+      if (!container) return;
+
+      const publishedModels = appState.models.filter(m => m.published);
+      if (publishedModels.length === 0) {
+        container.innerHTML = `
+          <div class="empty-gallery-state">
+            <div class="empty-icon">🎞️</div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Sample Models Coming Soon</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+              Our creative team is preparing new cinematic showcase edits. Check back shortly.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = publishedModels.map(model => `
+        <div class="video-card">
+          <div class="video-thumb-container" onclick="openVideoPlayer('${escapeHTML(model.title)}', '${escapeHTML(model.description)}', '${escapeHTML(model.video_url)}')">
+            <video src="${escapeHTML(model.video_url)}#t=0.5" preload="metadata"></video>
+            <div class="video-play-overlay">
+              <div class="play-btn-circle">▶</div>
+            </div>
+          </div>
+          <div class="video-details">
+            <h3 class="video-title">${escapeHTML(model.title)}</h3>
+            <p class="video-desc">${escapeHTML(model.description)}</p>
+            <div class="video-meta-bar">
+              <span>Showcase Edit</span>
+              <span class="badge-published">Verified Model</span>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    /* --------------------------------------------------------------------------
+       7. ORDER FORM INTERACTIONS & VALIDATION
+       -------------------------------------------------------------------------- */
+    function setupOrderForm() {
+      const slider = document.getElementById("duration-slider");
+      const durationDisplay = document.getElementById("slider-duration-display");
+      const priceDisplay = document.getElementById("slider-price-display");
+      const watermarkCheck = document.getElementById("watermark-checkbox");
+      const watermarkSubfield = document.getElementById("watermark-subfield");
+      const form = document.getElementById("video-order-form");
+
+      // Slider dynamic update
+      slider.addEventListener("input", (e) => {
+        const val = parseInt(e.target.value, 10);
+        durationDisplay.textContent = `${val} Seconds`;
+        const calculated = calculatePrice(val);
+        priceDisplay.textContent = calculated.toFixed(2);
+      });
+
+      // Watermark toggle
+      watermarkCheck.addEventListener("change", (e) => {
+        watermarkSubfield.style.display = e.target.checked ? "block" : "none";
+      });
+
+      // Drag and drop video upload
+      const dropzone = document.getElementById("upload-dropzone");
+      const fileInput = document.getElementById("video-file-input");
+      const browseBtn = document.getElementById("browse-video-btn");
+      const fileBox = document.getElementById("file-selected-box");
+      const fileNameEl = document.getElementById("selected-file-name");
+      const fileSizeEl = document.getElementById("selected-file-size");
+      const removeBtn = document.getElementById("remove-file-btn");
+
+      browseBtn.addEventListener("click", () => fileInput.click());
+      dropzone.addEventListener("click", (e) => {
+        if (e.target !== browseBtn) fileInput.click();
+      });
+
+      ["dragenter", "dragover"].forEach(event => {
+        dropzone.addEventListener(event, (e) => {
+          e.preventDefault();
+          dropzone.classList.add("dragover");
+        });
+      });
+
+      ["dragleave", "drop"].forEach(event => {
+        dropzone.addEventListener(event, (e) => {
+          e.preventDefault();
+          dropzone.classList.remove("dragover");
+        });
+      });
+
+      dropzone.addEventListener("drop", (e) => {
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          handleSelectedVideo(e.dataTransfer.files[0]);
+        }
+      });
+
+      fileInput.addEventListener("change", (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+          handleSelectedVideo(e.target.files[0]);
+        }
+      });
+
+      removeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        appState.selectedVideoFile = null;
+        fileInput.value = "";
+        fileBox.style.display = "none";
+        dropzone.style.display = "block";
+      });
+
+      function handleSelectedVideo(file) {
+        const validTypes = ["video/mp4", "video/quicktime", "video/webm"];
+        const ext = file.name.split('.').pop().toLowerCase();
+        const validExts = ["mp4", "mov", "webm"];
+
+        if (!validTypes.includes(file.type) && !validExts.includes(ext)) {
+          showToast("Unsupported format. Please upload MP4, MOV, or WebM.", "error");
+          return;
+        }
+
+        const maxBytes = appState.settings.maxUploadSizeMB * 1024 * 1024;
+        if (file.size > maxBytes) {
+          showToast(`File size exceeds limit of ${appState.settings.maxUploadSizeMB} MB.`, "error");
+          return;
+        }
+
+        appState.selectedVideoFile = file;
+        fileNameEl.textContent = file.name;
+        fileSizeEl.textContent = (file.size / (1024 * 1024)).toFixed(1) + " MB";
+        dropzone.style.display = "none";
+        fileBox.style.display = "flex";
+        showToast("Video selected successfully.", "info");
+      }
+
+      // Submission
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("order-name").value.trim();
+        const whatsapp = document.getElementById("order-whatsapp").value.trim();
+        const instructions = document.getElementById("order-instructions").value.trim();
+        const exactText = document.getElementById("order-exact-text").value.trim();
+        const durationSeconds = parseInt(slider.value, 10);
+        const estimatedPrice = calculatePrice(durationSeconds);
+        const watermarkEnabled = watermarkCheck.checked;
+        const watermarkText = watermarkEnabled ? document.getElementById("watermark-text").value.trim() : "";
+
+        // Field validations
+        if (!name) {
+          showToast("Please enter your full name.", "error");
+          document.getElementById("order-name").focus();
+          return;
+        }
+
+        // WhatsApp international phone validation
+        // Must contain at least 7 digits, optional leading +, spaces or hyphens allowed
+        const phoneDigits = whatsapp.replace(/\D/g, '');
+        if (!whatsapp.startsWith('+') || phoneDigits.length < 8) {
+          showToast("Please enter a valid WhatsApp number with country code (e.g. +923001234567).", "error");
+          document.getElementById("order-whatsapp").focus();
+          return;
+        }
+
+        if (!appState.selectedVideoFile) {
+          showToast("Please upload your original raw video file.", "error");
+          dropzone.scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+
+        if (!instructions) {
+          showToast("Please provide detailed editing instructions.", "error");
+          document.getElementById("order-instructions").focus();
+          return;
+        }
+
+        if (!exactText) {
+          showToast("Please provide the exact text to appear in the video.", "error");
+          document.getElementById("order-exact-text").focus();
+          return;
+        }
+
+        // Lock button to prevent duplicate submissions
+        const submitBtn = document.getElementById("submit-order-btn");
+        const submitSpinner = document.getElementById("submit-btn-spinner");
+        const submitText = document.getElementById("submit-btn-text");
+        const progressContainer = document.getElementById("upload-progress-container");
+        const progressFill = document.getElementById("upload-progress-fill");
+        const percentLabel = document.getElementById("upload-percent-label");
+
+        submitBtn.disabled = true;
+        submitSpinner.style.display = "inline-block";
+        submitText.textContent = "Uploading & Submitting...";
+        progressContainer.style.display = "block";
+
+        try {
+          // Generate unique reference
+          const refYear = new Date().getFullYear();
+          const randomRef = Math.floor(1000 + Math.random() * 9000);
+          const orderRef = `XE-${refYear}-${randomRef}`;
+          const orderId = "ord-" + Date.now() + "-" + Math.random().toString(36).substr(2, 6);
+
+          // Video Upload Simulation / Supabase Upload
+          let videoStoragePath = "";
+          let videoUrl = "";
+
+          if (isSupabaseConfigured && supabaseClient) {
+            // Upload to Supabase Storage Private Bucket 'orders-private'
+            const filePath = `customer-originals/${orderRef}_${appState.selectedVideoFile.name}`;
+            const { data: uploadData, error: uploadErr } = await supabaseClient.storage
+              .from("orders-private")
+              .upload(filePath, appState.selectedVideoFile, {
+                cacheControl: "3600",
+                upsert: false
+              });
+
+            if (uploadErr) {
+              throw new Error("Cloud video storage upload failed: " + uploadErr.message);
+            }
+            videoStoragePath = uploadData.path;
+          } else {
+            // Local IndexedDB Storage with realistic progress bar
+            await new Promise((resolve) => {
+              let p = 0;
+              const interval = setInterval(() => {
+                p += 20;
+                progressFill.style.width = p + "%";
+                percentLabel.textContent = p + "%";
+                if (p >= 100) {
+                  clearInterval(interval);
+                  resolve();
+                }
+              }, 60);
+            });
+
+            // Store blob in IndexedDB
+            const blobKey = `blob_${orderId}`;
+            await storeVideoBlob(blobKey, appState.selectedVideoFile);
+            videoStoragePath = blobKey;
+            videoUrl = URL.createObjectURL(appState.selectedVideoFile);
+          }
+
+          // Build order object
+          const newOrder = {
+            id: orderId,
+            reference: orderRef,
+            customer_name: name,
+            whatsapp_number: whatsapp,
+            video_duration_seconds: durationSeconds,
+            estimated_price: estimatedPrice,
+            final_agreed_amount: estimatedPrice,
+            price_adjustment_reason: "",
+            editing_instructions: instructions,
+            exact_text: exactText,
+            watermark_enabled: watermarkEnabled,
+            watermark_text: watermarkText,
+            order_status: "Pending",
+            payment_status: "Unpaid",
+            video_storage_path: videoStoragePath,
+            video_filename: appState.selectedVideoFile.name,
+            video_size_mb: Number((appState.selectedVideoFile.size / (1024 * 1024)).toFixed(1)),
+            created_at: new Date().toISOString(),
+            delivered_at: null,
+            payment_received_at: null
+          };
+
+          appState.orders.unshift(newOrder);
+          await saveOrder(newOrder);
+
+          // Show confirmation modal
+          document.getElementById("confirmed-order-ref").textContent = orderRef;
+          document.getElementById("confirmed-order-price").textContent = `$${estimatedPrice.toFixed(2)} USD (Estimated)`;
+          openModal("modal-order-success");
+
+          // Reset form fields
+          form.reset();
+          appState.selectedVideoFile = null;
+          fileBox.style.display = "none";
+          dropzone.style.display = "block";
+          progressContainer.style.display = "none";
+          watermarkSubfield.style.display = "none";
+          durationDisplay.textContent = "10 Seconds";
+          priceDisplay.textContent = "1.50";
+          slider.value = 10;
+
+          updateAdminDashboard();
+        } catch (err) {
+          console.error("Submission failed:", err);
+          showToast(err.message || "Submission failed. Your form data has been preserved.", "error");
+        } finally {
+          submitBtn.disabled = false;
+          submitSpinner.style.display = "none";
+          submitText.textContent = "Submit My Video Order";
+        }
+      });
+    }
+
+    /* --------------------------------------------------------------------------
+       8. ADMIN AUTHENTICATION (SECURE CLIENT HASHING + SUPABASE)
+       -------------------------------------------------------------------------- */
+    async function hashStringSHA256(str) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(str);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function setupAdminAuth() {
+      const loginModal = document.getElementById("modal-admin-login");
+      const loginForm = document.getElementById("admin-login-form");
+      const usernameInput = document.getElementById("login-username");
+      const passwordInput = document.getElementById("login-password");
+      const errorMsg = document.getElementById("login-error-msg");
+      const openBtn = document.getElementById("open-admin-login-btn");
+      const mobileOpenBtn = document.getElementById("mobile-open-admin-btn");
+      const footerAdminBtn = document.getElementById("footer-admin-link");
+      const welcomeModal = document.getElementById("modal-welcome-popup");
+      const enterDashboardBtn = document.getElementById("btn-enter-dashboard");
+      const logoutBtn = document.getElementById("admin-logout-btn");
+      const returnSiteBtn = document.getElementById("admin-return-site-btn");
+
+      function openLogin() {
+        usernameInput.value = "";
+        passwordInput.value = "";
+        errorMsg.style.display = "none";
+        openModal("modal-admin-login");
+        setTimeout(() => usernameInput.focus(), 150);
+      }
+
+      openBtn.addEventListener("click", openLogin);
+      mobileOpenBtn.addEventListener("click", openLogin);
+      footerAdminBtn.addEventListener("click", openLogin);
+
+      loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const user = usernameInput.value.trim();
+        const pass = passwordInput.value;
+
+        // Secure password hashing
+        const computedHash = await hashStringSHA256(pass);
+
+        if (user === ADMIN_CREDENTIALS.username && computedHash === ADMIN_CREDENTIALS.passwordHash) {
+          // Success
+          closeModal("modal-admin-login");
+          sessionStorage.setItem("xeveron_admin_auth", "true");
+          sessionStorage.setItem("xeveron_admin_user", user);
+          
+          // Clear credentials from inputs immediately
+          usernameInput.value = "";
+          passwordInput.value = "";
+          errorMsg.style.display = "none";
+
+          // Show Welcome popup
+          openModal("modal-welcome-popup");
+        } else {
+          // Generic error message without revealing specific credential failure
+          errorMsg.style.display = "block";
+          passwordInput.value = "";
+        }
+      });
+
+      enterDashboardBtn.addEventListener("click", () => {
+        closeModal("modal-welcome-popup");
+        showAdminPanel();
+      });
+
+      logoutBtn.addEventListener("click", () => {
+        sessionStorage.removeItem("xeveron_admin_auth");
+        sessionStorage.removeItem("xeveron_admin_user");
+        hideAdminPanel();
+        showToast("Logged out successfully.", "info");
+      });
+
+      returnSiteBtn.addEventListener("click", () => {
+        hideAdminPanel();
+      });
+    }
+
+    function showAdminPanel() {
+      document.getElementById("website-app").style.display = "none";
+      document.getElementById("admin-panel").classList.add("active");
+      updateAdminDashboard();
+      window.scrollTo(0, 0);
+    }
+
+    function hideAdminPanel() {
+      document.getElementById("admin-panel").classList.remove("active");
+      document.getElementById("website-app").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    /* --------------------------------------------------------------------------
+       9. ADMIN DASHBOARD & MANAGEMENT (TABS, ORDERS, GALLERY, SALES)
+       -------------------------------------------------------------------------- */
+    function setupAdminDashboardTabs() {
+      const navButtons = document.querySelectorAll(".admin-nav-item[data-tab]");
+      navButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          navButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          const tab = btn.dataset.tab;
+          document.querySelectorAll(".admin-section").forEach(s => s.classList.remove("active"));
+          const targetSection = document.getElementById(`admin-section-${tab}`);
+          if (targetSection) targetSection.classList.add("active");
+          appState.activeAdminTab = tab;
+          updateAdminDashboard();
+        });
+      });
+
+      document.getElementById("banner-settings-shortcut").addEventListener("click", () => {
+        const settingsBtn = document.querySelector('.admin-nav-item[data-tab="settings"]');
+        if (settingsBtn) settingsBtn.click();
+      });
+    }
+
+    function updateAdminDashboard() {
+      // Metrics
+      const totalOrders = appState.orders.length;
+      const pendingOrders = appState.orders.filter(o => o.order_status === "Pending").length;
+      const inProgressOrders = appState.orders.filter(o => o.order_status === "In Progress").length;
+      const deliveredOrders = appState.orders.filter(o => o.order_status === "Delivered").length;
+      const publishedModels = appState.models.filter(m => m.published).length;
+
+      // Revenue Calculation: STRICT RULE -> ONLY recorded payments count as revenue!
+      const totalReceivedRevenue = appState.payments.reduce((sum, p) => sum + Number(p.amount || 0), 0);
+      
+      const now = new Date();
+      const currentMonth = now.getMonth();
+      const currentYear = now.getFullYear();
+
+      const monthReceivedRevenue = appState.payments
+        .filter(p => {
+          const d = new Date(p.payment_date);
+          return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
+        })
+        .reduce((sum, p) => sum + Number(p.amount || 0), 0);
+
+      const priorReceivedRevenue = totalReceivedRevenue - monthReceivedRevenue;
+      const outstandingPayments = appState.orders.filter(o => o.payment_status === "Unpaid" && o.order_status !== "Cancelled").length;
+
+      // Update metric cards
+      document.getElementById("metric-total-orders").textContent = totalOrders;
+      document.getElementById("metric-pending-orders").textContent = pendingOrders;
+      document.getElementById("metric-inprogress-orders").textContent = inProgressOrders;
+      document.getElementById("metric-delivered-orders").textContent = deliveredOrders;
+      document.getElementById("metric-total-sales").textContent = totalReceivedRevenue.toFixed(2);
+      document.getElementById("metric-month-sales").textContent = monthReceivedRevenue.toFixed(2);
+      document.getElementById("metric-published-models").textContent = publishedModels;
+
+      // Sales tab metrics
+      document.getElementById("sales-month-revenue").textContent = monthReceivedRevenue.toFixed(2);
+      document.getElementById("sales-prior-revenue").textContent = priorReceivedRevenue.toFixed(2);
+      document.getElementById("sales-completed-count").textContent = deliveredOrders;
+      document.getElementById("sales-outstanding-count").textContent = outstandingPayments;
+
+      // Tables
+      renderAdminRecentOrders();
+      renderAdminOrdersTable();
+      renderAdminModelsTable();
+      renderAdminPaymentsTable();
+      renderSalesChart();
+    }
+
+    function renderAdminRecentOrders() {
+      const container = document.getElementById("overview-recent-orders-container");
+      if (!container) return;
+
+      const recent = appState.orders.slice(0, 5);
+      if (recent.length === 0) {
+        container.innerHTML = `<div style="padding: 2rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: var(--radius-md);">No customer orders recorded yet.</div>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="admin-table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Customer</th>
+                <th>WhatsApp</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Payment</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${recent.map(o => `
+                <tr>
+                  <td><strong>${escapeHTML(o.reference)}</strong></td>
+                  <td>${escapeHTML(o.customer_name)}</td>
+                  <td>${escapeHTML(o.whatsapp_number)}</td>
+                  <td>${o.video_duration_seconds}s</td>
+                  <td><span class="status-badge status-${o.order_status.toLowerCase().replace(' ', '-')}">${o.order_status}</span></td>
+                  <td><span class="status-badge payment-badge-${o.payment_status.toLowerCase()}">${o.payment_status}</span></td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function renderAdminOrdersTable() {
+      const tbody = document.getElementById("admin-orders-tbody");
+      if (!tbody) return;
+
+      const searchTerm = (document.getElementById("order-search-input")?.value || "").toLowerCase();
+      const statusFilter = document.getElementById("order-status-filter")?.value || "all";
+
+      let filtered = appState.orders.filter(o => {
+        const matchesSearch = o.reference.toLowerCase().includes(searchTerm) || o.customer_name.toLowerCase().includes(searchTerm);
+        const matchesStatus = statusFilter === "all" || o.order_status === statusFilter;
+        return matchesSearch && matchesStatus;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted); padding: 2.5rem;">No matching orders found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(o => `
+        <tr>
+          <td><strong>${escapeHTML(o.reference)}</strong></td>
+          <td>${escapeHTML(o.customer_name)}</td>
+          <td>
+            <a href="https://wa.me/${o.whatsapp_number.replace(/\D/g, '')}" target="_blank" rel="noopener" style="color: #25d366; text-decoration: none;">
+              ${escapeHTML(o.whatsapp_number)} ↗
+            </a>
+          </td>
+          <td>${o.video_duration_seconds}s ($${Number(o.estimated_price).toFixed(2)})</td>
+          <td>
+            <span class="status-badge status-${o.order_status.toLowerCase().replace(' ', '-')}">${o.order_status}</span>
+          </td>
+          <td>
+            <span style="font-weight: 600;">$${Number(o.final_agreed_amount || o.estimated_price).toFixed(2)}</span>
+            <span class="status-badge payment-badge-${o.payment_status.toLowerCase()}" style="margin-left: 4px;">${o.payment_status}</span>
+          </td>
+          <td>
+            <button type="button" class="btn btn-secondary btn-table-sm" onclick="viewOrderVideo('${o.id}')">
+              Play Video
+            </button>
+          </td>
+          <td>
+            <div class="table-actions">
+              <button type="button" class="btn btn-primary btn-table-sm" onclick="openOrderDetailModal('${o.id}')">Manage</button>
+            </div>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    window.openOrderDetailModal = function(orderId) {
+      const order = appState.orders.find(o => o.id === orderId);
+      if (!order) return;
+
+      document.getElementById("edit-order-id").value = order.id;
+      document.getElementById("detail-order-ref").textContent = order.reference;
+      document.getElementById("detail-order-date").textContent = `Submitted: ${new Date(order.created_at).toLocaleString()}`;
+      document.getElementById("detail-client-name").textContent = order.customer_name;
+      
+      const waLink = document.getElementById("detail-client-wa");
+      waLink.textContent = order.whatsapp_number;
+      waLink.href = `https://wa.me/${order.whatsapp_number.replace(/\D/g, '')}`;
+
+      document.getElementById("detail-duration").textContent = `${order.video_duration_seconds} Seconds`;
+      document.getElementById("detail-estimated-price").textContent = Number(order.estimated_price).toFixed(2);
+      document.getElementById("detail-watermark").textContent = order.watermark_enabled ? `Yes (${order.watermark_text || 'Default'})` : 'No';
+      document.getElementById("detail-exact-text").textContent = order.exact_text || 'None';
+      document.getElementById("detail-instructions").textContent = order.editing_instructions;
+
+      document.getElementById("edit-order-status").value = order.order_status;
+      document.getElementById("edit-agreed-amount").value = order.final_agreed_amount || order.estimated_price;
+      document.getElementById("edit-adjustment-reason").value = order.price_adjustment_reason || "";
+      document.getElementById("edit-payment-received").checked = order.payment_status === "Paid";
+
+      document.getElementById("detail-order-status-badge").innerHTML = `
+        <span class="status-badge status-${order.order_status.toLowerCase().replace(' ', '-')}">${order.order_status}</span>
+        <span class="status-badge payment-badge-${order.payment_status.toLowerCase()}">${order.payment_status}</span>
+      `;
+
+      document.getElementById("detail-watch-video-btn").onclick = () => viewOrderVideo(order.id);
+
+      openModal("modal-order-detail");
+    };
+
+    window.viewOrderVideo = async function(orderId) {
+      const order = appState.orders.find(o => o.id === orderId);
+      if (!order) return;
+
+      if (isSupabaseConfigured && supabaseClient) {
+        // Generate short-lived signed URL from private bucket
+        try {
+          const { data, error } = await supabaseClient.storage
+            .from("orders-private")
+            .createSignedUrl(order.video_storage_path, 3600);
+          if (error) throw error;
+          openVideoPlayer(`Raw Footage — ${order.reference}`, `Client: ${order.customer_name}`, data.signedUrl);
+        } catch (err) {
+          showToast("Failed to generate private video download link: " + err.message, "error");
+        }
+      } else {
+        // Retrieve local blob from IndexedDB
+        const blob = await getVideoBlob(order.video_storage_path);
+        if (blob) {
+          const url = URL.createObjectURL(blob);
+          openVideoPlayer(`Raw Footage — ${order.reference}`, `Client: ${order.customer_name} (${order.video_filename})`, url);
+        } else {
+          showToast("Video footage not found in local storage.", "error");
+        }
+      }
+    };
+
+    // Update Order Form Submit
+    document.getElementById("order-update-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const id = document.getElementById("edit-order-id").value;
+      const order = appState.orders.find(o => o.id === id);
+      if (!order) return;
+
+      const newStatus = document.getElementById("edit-order-status").value;
+      const newAgreedAmount = parseFloat(document.getElementById("edit-agreed-amount").value) || order.estimated_price;
+      const reason = document.getElementById("edit-adjustment-reason").value.trim();
+      const isPaid = document.getElementById("edit-payment-received").checked;
+
+      const prevPaymentStatus = order.payment_status;
+
+      order.order_status = newStatus;
+      order.final_agreed_amount = newAgreedAmount;
+      order.price_adjustment_reason = reason;
+      order.payment_status = isPaid ? "Paid" : "Unpaid";
+
+      if (newStatus === "Delivered" && !order.delivered_at) {
+        order.delivered_at = new Date().toISOString();
+      }
+
+      // If marked paid just now, record actual payment transaction
+      if (isPaid && prevPaymentStatus !== "Paid") {
+        order.payment_received_at = new Date().toISOString();
+        const paymentRec = {
+          id: "pay-" + Date.now(),
+          order_id: order.id,
+          order_reference: order.reference,
+          customer_name: order.customer_name,
+          amount: newAgreedAmount,
+          currency: "USD",
+          payment_date: new Date().toISOString(),
+          status: "Completed"
+        };
+        await savePaymentRecord(paymentRec);
+      }
+
+      await updateOrderRecord(order);
+      closeModal("modal-order-detail");
+      showToast(`Order ${order.reference} updated successfully.`, "success");
+      updateAdminDashboard();
+    });
+
+    /* --------------------------------------------------------------------------
+       10. PREVIEW MODELS MANAGEMENT
+       -------------------------------------------------------------------------- */
+    function renderAdminModelsTable() {
+      const tbody = document.getElementById("admin-models-tbody");
+      if (!tbody) return;
+
+      if (appState.models.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">No preview models uploaded yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = appState.models.map(m => `
+        <tr>
+          <td style="width: 120px;">
+            <div style="width: 100px; aspect-ratio: 16/9; background: #000; border-radius: 4px; overflow: hidden; cursor: pointer;" onclick="openVideoPlayer('${escapeHTML(m.title)}', '${escapeHTML(m.description)}', '${escapeHTML(m.video_url)}')">
+              <video src="${escapeHTML(m.video_url)}#t=0.5" style="width: 100%; height: 100%; object-fit: cover;"></video>
+            </div>
+          </td>
+          <td>
+            <strong>${escapeHTML(m.title)}</strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted); max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${escapeHTML(m.description)}</div>
+          </td>
+          <td>${new Date(m.created_at).toLocaleDateString()}</td>
+          <td>
+            <button type="button" class="btn btn-secondary btn-table-sm" onclick="toggleModelPublish('${m.id}')" style="color: ${m.published ? 'var(--accent-emerald)' : 'var(--text-muted)'};">
+              ${m.published ? '● Published' : '○ Draft (Hidden)'}
+            </button>
+          </td>
+          <td>
+            <div class="table-actions">
+              <button type="button" class="btn btn-secondary btn-table-sm" onclick="editModel('${m.id}')">Edit</button>
+              <button type="button" class="btn btn-table-sm" style="color: var(--accent-rose); background: rgba(244,63,94,0.1);" onclick="confirmDeleteModel('${m.id}')">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    document.getElementById("btn-open-add-model").addEventListener("click", () => {
+      document.getElementById("model-modal-heading").textContent = "Add Preview Model";
+      document.getElementById("admin-model-form").reset();
+      document.getElementById("model-edit-id").value = "";
+      document.getElementById("model-video-upload-group").style.display = "block";
+      openModal("modal-model-form");
+    });
+
+    window.editModel = function(id) {
+      const model = appState.models.find(m => m.id === id);
+      if (!model) return;
+
+      document.getElementById("model-modal-heading").textContent = "Edit Preview Model";
+      document.getElementById("model-edit-id").value = model.id;
+      document.getElementById("model-input-title").value = model.title;
+      document.getElementById("model-input-desc").value = model.description;
+      document.getElementById("model-input-published").checked = model.published;
+      document.getElementById("model-video-upload-group").style.display = "none";
+      openModal("modal-model-form");
+    };
+
+    window.toggleModelPublish = async function(id) {
+      const model = appState.models.find(m => m.id === id);
+      if (!model) return;
+      model.published = !model.published;
+      await saveModel(model);
+      renderGallery();
+      renderAdminModelsTable();
+      updateAdminDashboard();
+      showToast(`Model ${model.published ? 'published' : 'unpublished'}.`, "info");
+    };
+
+    window.confirmDeleteModel = function(id) {
+      const model = appState.models.find(m => m.id === id);
+      if (!model) return;
+      document.getElementById("delete-prompt-text").textContent = `Permanently delete the preview model "${model.title}"?`;
+      appState.deleteActionCallback = () => deleteModelRecord(id);
+      openModal("modal-delete-confirm");
+    };
+
+    document.getElementById("btn-confirm-delete").addEventListener("click", () => {
+      if (typeof appState.deleteActionCallback === "function") {
+        appState.deleteActionCallback();
+        appState.deleteActionCallback = null;
+      }
+      closeModal("modal-delete-confirm");
+    });
+
+    document.getElementById("admin-model-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const id = document.getElementById("model-edit-id").value;
+      const title = document.getElementById("model-input-title").value.trim();
+      const desc = document.getElementById("model-input-desc").value.trim();
+      const published = document.getElementById("model-input-published").checked;
+      const fileInput = document.getElementById("model-video-file-input");
+
+      if (id) {
+        // Edit existing
+        const model = appState.models.find(m => m.id === id);
+        if (model) {
+          model.title = title;
+          model.description = desc;
+          model.published = published;
+          await saveModel(model);
+          showToast("Model updated.", "success");
+        }
+      } else {
+        // Create new
+        if (!fileInput.files || fileInput.files.length === 0) {
+          showToast("Please select a video file for this preview model.", "error");
+          return;
+        }
+        const file = fileInput.files[0];
+        let videoUrl = "";
+
+        if (isSupabaseConfigured && supabaseClient) {
+          const filePath = `gallery-models/${Date.now()}_${file.name}`;
+          const { data, error } = await supabaseClient.storage.from("preview-models-public").upload(filePath, file);
+          if (error) {
+            showToast("Cloud upload failed: " + error.message, "error");
+            return;
+          }
+          const { data: pubData } = supabaseClient.storage.from("preview-models-public").getPublicUrl(data.path);
+          videoUrl = pubData.publicUrl;
+        } else {
+          // Local blob storage
+          const blobKey = `model_${Date.now()}`;
+          await storeVideoBlob(blobKey, file);
+          videoUrl = URL.createObjectURL(file);
+        }
+
+        const newModel = {
+          id: "mod-" + Date.now(),
+          title,
+          description: desc,
+          video_url: videoUrl,
+          published,
+          created_at: new Date().toISOString()
+        };
+
+        appState.models.unshift(newModel);
+        await saveModel(newModel);
+        showToast("New preview model added.", "success");
+      }
+
+      closeModal("modal-model-form");
+      renderGallery();
+      renderAdminModelsTable();
+      updateAdminDashboard();
+    });
+
+    /* --------------------------------------------------------------------------
+       11. SALES RECONCILIATION & SVG REVENUE CHART
+       -------------------------------------------------------------------------- */
+    function renderAdminPaymentsTable() {
+      const tbody = document.getElementById("admin-payments-tbody");
+      if (!tbody) return;
+
+      if (appState.payments.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">No verified payments recorded yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = appState.payments.map(p => `
+        <tr>
+          <td><code>${p.id}</code></td>
+          <td><strong>${escapeHTML(p.order_reference || '-')}</strong></td>
+          <td>${escapeHTML(p.customer_name || '-')}</td>
+          <td style="color: var(--accent-emerald); font-weight: 700;">$${Number(p.amount).toFixed(2)} USD</td>
+          <td>${new Date(p.payment_date).toLocaleDateString()}</td>
+          <td><span class="status-badge payment-badge-paid">Received</span></td>
+        </tr>
+      `).join("");
+    }
+
+    function renderSalesChart() {
+      const container = document.getElementById("sales-chart-container");
+      if (!container) return;
+
+      // Group payments by the last 6 months
+      const months = [];
+      const now = new Date();
+      for (let i = 5; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        months.push({
+          label: d.toLocaleString('default', { month: 'short' }),
+          month: d.getMonth(),
+          year: d.getFullYear(),
+          revenue: 0
+        });
+      }
+
+      appState.payments.forEach(p => {
+        const pd = new Date(p.payment_date);
+        const m = months.find(item => item.month === pd.getMonth() && item.year === pd.getFullYear());
+        if (m) m.revenue += Number(p.amount);
+      });
+
+      const maxRev = Math.max(...months.map(m => m.revenue), 10);
+      const width = 600;
+      const height = 180;
+      const pad = 35;
+
+      const points = months.map((m, idx) => {
+        const x = pad + (idx * ((width - (pad * 2)) / (months.length - 1)));
+        const y = height - pad - ((m.revenue / maxRev) * (height - (pad * 2)));
+        return { x, y, label: m.label, rev: m.revenue };
+      });
+
+      const polylinePoints = points.map(p => `${p.x},${p.y}`).join(" ");
+
+      container.innerHTML = `
+        <svg viewBox="0 0 ${width} ${height}" style="width: 100%; height: 100%; overflow: visible;">
+          <defs>
+            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Grid horizontal lines -->
+          <line x1="${pad}" y1="${height - pad}" x2="${width - pad}" y2="${height - pad}" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <line x1="${pad}" y1="${pad}" x2="${width - pad}" y2="${pad}" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4"/>
+
+          <!-- Area fill -->
+          <polygon points="${pad},${height - pad} ${polylinePoints} ${width - pad},${height - pad}" fill="url(#chartGrad)"/>
+
+          <!-- Main line -->
+          <polyline points="${polylinePoints}" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+
+          <!-- Points & Labels -->
+          ${points.map(p => `
+            <circle cx="${p.x}" cy="${p.y}" r="4.5" fill="#0c0d10" stroke="#ffffff" stroke-width="2.5"/>
+            <text x="${p.x}" y="${height - 10}" fill="#94a3b8" font-size="11" text-anchor="middle">${p.label}</text>
+            <text x="${p.x}" y="${p.y - 10}" fill="#ffffff" font-size="10" font-weight="600" text-anchor="middle">$${p.rev.toFixed(0)}</text>
+          `).join("")}
+        </svg>
+      `;
+    }
+
+    /* --------------------------------------------------------------------------
+       12. SETTINGS MANAGEMENT
+       -------------------------------------------------------------------------- */
+    function setupSettings() {
+      // Load current values
+      document.getElementById("setting-brand-name").value = appState.settings.brandName;
+      document.getElementById("setting-tagline").value = appState.settings.tagline;
+      document.getElementById("setting-email").value = appState.settings.contactEmail;
+      document.getElementById("setting-whatsapp").value = appState.settings.whatsappUrl;
+      document.getElementById("setting-delivery-msg").value = appState.settings.deliveryTimeMsg;
+
+      document.getElementById("setting-base-price").value = appState.settings.basePrice;
+      document.getElementById("setting-price-increment").value = appState.settings.priceIncrement;
+      document.getElementById("setting-max-duration").value = appState.settings.maxDuration;
+      document.getElementById("setting-max-upload").value = appState.settings.maxUploadSizeMB;
+
+      document.getElementById("setting-supabase-url").value = localStorage.getItem("xeveron_sb_url") || "";
+      document.getElementById("setting-supabase-anon").value = localStorage.getItem("xeveron_sb_anon") || "";
+
+      // Save Brand Settings
+      document.getElementById("settings-brand-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        appState.settings.brandName = document.getElementById("setting-brand-name").value.trim() || CONFIG.brandName;
+        appState.settings.tagline = document.getElementById("setting-tagline").value.trim() || CONFIG.tagline;
+        appState.settings.contactEmail = document.getElementById("setting-email").value.trim() || CONFIG.contactEmail;
+        appState.settings.whatsappUrl = document.getElementById("setting-whatsapp").value.trim() || CONFIG.whatsappUrl;
+        appState.settings.deliveryTimeMsg = document.getElementById("setting-delivery-msg").value.trim() || CONFIG.deliveryTimeMsg;
+
+        localStorage.setItem("xeveron_settings", JSON.stringify(appState.settings));
+        applySettingsToUI();
+        showToast("Store branding settings saved.", "success");
+      });
+
+      // Save Pricing Settings
+      document.getElementById("settings-pricing-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        appState.settings.basePrice = parseFloat(document.getElementById("setting-base-price").value) || CONFIG.basePrice;
+        appState.settings.priceIncrement = parseFloat(document.getElementById("setting-price-increment").value) || CONFIG.priceIncrement;
+        appState.settings.maxDuration = parseInt(document.getElementById("setting-max-duration").value, 10) || CONFIG.maxDuration;
+        appState.settings.maxUploadSizeMB = parseInt(document.getElementById("setting-max-upload").value, 10) || CONFIG.maxUploadSizeMB;
+
+        localStorage.setItem("xeveron_settings", JSON.stringify(appState.settings));
+        applySettingsToUI();
+        showToast("Pricing and limit settings saved.", "success");
+      });
+
+      // Connect Supabase
+      document.getElementById("settings-supabase-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const url = document.getElementById("setting-supabase-url").value.trim();
+        const anon = document.getElementById("setting-supabase-anon").value.trim();
+
+        if (!url || !anon) {
+          showToast("Please provide both Supabase URL and Anon key.", "error");
+          return;
+        }
+
+        localStorage.setItem("xeveron_sb_url", url);
+        localStorage.setItem("xeveron_sb_anon", anon);
+
+        if (initSupabase()) {
+          showToast("Supabase Cloud Connected successfully!", "success");
+          loadData();
+        } else {
+          showToast("Could not connect to Supabase. Check credentials.", "error");
+        }
+      });
+
+      // Disconnect Supabase
+      document.getElementById("btn-disconnect-supabase").addEventListener("click", () => {
+        localStorage.removeItem("xeveron_sb_url");
+        localStorage.removeItem("xeveron_sb_anon");
+        supabaseClient = null;
+        isSupabaseConfigured = false;
+        document.getElementById("setting-supabase-url").value = "";
+        document.getElementById("setting-supabase-anon").value = "";
+        updateBackendStatusUI("Local Storage Mode", false);
+        showToast("Reset to local storage mode.", "info");
+      });
+
+      // Show SQL Schema modal
+      document.getElementById("btn-show-sql-schema").addEventListener("click", () => {
+        document.getElementById("sql-schema-textarea").value = getSupabaseSQLSchema();
+        openModal("modal-sql-schema");
+      });
+
+      document.getElementById("btn-copy-sql").addEventListener("click", () => {
+        const textarea = document.getElementById("sql-schema-textarea");
+        textarea.select();
+        navigator.clipboard.writeText(textarea.value).then(() => {
+          showToast("SQL Schema copied to clipboard!", "success");
+        });
+      });
+    }
+
+    function applySettingsToUI() {
+      // Update Branding
+      document.getElementById("header-brand-name").textContent = appState.settings.brandName;
+      document.getElementById("header-brand-tagline").textContent = appState.settings.tagline;
+      document.getElementById("hero-brand-name").textContent = appState.settings.brandName.toUpperCase();
+      document.getElementById("hero-brand-tagline").textContent = appState.settings.tagline;
+      document.getElementById("hero-delivery-badge").textContent = appState.settings.deliveryTimeMsg.split('.')[0];
+      document.getElementById("max-upload-size-display").textContent = appState.settings.maxUploadSizeMB;
+
+      // Update Slider Max
+      const slider = document.getElementById("duration-slider");
+      if (slider) {
+        slider.max = appState.settings.maxDuration;
+        const maxPrice = calculatePrice(appState.settings.maxDuration);
+        document.getElementById("slider-max-label").textContent = `Max: ${appState.settings.maxDuration}s ($${maxPrice.toFixed(2)})`;
+      }
+    }
+
+    function getSupabaseSQLSchema() {
+      return `-- =======================================================
+-- XEVERON EDITZ — COMPLETE SUPABASE POSTGRESQL SCHEMA
+-- Paste this script into your Supabase Dashboard SQL Editor
+-- =======================================================
+
+-- 1. Orders Table
+CREATE TABLE IF NOT EXISTS public.orders (
+    id TEXT PRIMARY KEY,
+    reference TEXT UNIQUE NOT NULL,
+    customer_name TEXT NOT NULL,
+    whatsapp_number TEXT NOT NULL,
+    video_duration_seconds INTEGER NOT NULL,
+    estimated_price NUMERIC(10, 2) NOT NULL,
+    final_agreed_amount NUMERIC(10, 2),
+    price_adjustment_reason TEXT,
+    editing_instructions TEXT NOT NULL,
+    exact_text TEXT NOT NULL,
+    watermark_enabled BOOLEAN DEFAULT FALSE,
+    watermark_text TEXT,
+    order_status TEXT DEFAULT 'Pending' CHECK (order_status IN ('Pending', 'In Progress', 'Delivered', 'Cancelled')),
+    payment_status TEXT DEFAULT 'Unpaid' CHECK (payment_status IN ('Unpaid', 'Paid')),
+    video_storage_path TEXT NOT NULL,
+    video_filename TEXT,
+    video_size_mb NUMERIC(8, 2),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    delivered_at TIMESTAMPTZ,
+    payment_received_at TIMESTAMPTZ
+);
+
+-- 2. Preview Models Table
+CREATE TABLE IF NOT EXISTS public.preview_models (
+    id TEXT PRIMARY KEY,
+    title TEXT NOT NULL,
+    description TEXT,
+    video_url TEXT NOT NULL,
+    thumbnail_url TEXT,
+    published BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. Payments Table
+CREATE TABLE IF NOT EXISTS public.payments (
+    id TEXT PRIMARY KEY,
+    order_id TEXT REFERENCES public.orders(id) ON DELETE SET NULL,
+    order_reference TEXT,
+    customer_name TEXT,
+    amount NUMERIC(10, 2) NOT NULL,
+    currency TEXT DEFAULT 'USD',
+    payment_date TIMESTAMPTZ DEFAULT NOW(),
+    status TEXT DEFAULT 'Completed'
+);
+
+-- 4. Site Settings Table
+CREATE TABLE IF NOT EXISTS public.site_settings (
+    key TEXT PRIMARY KEY,
+    value JSONB NOT NULL,
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. Enable Row-Level Security (RLS)
+ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.preview_models ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.payments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.site_settings ENABLE ROW LEVEL SECURITY;
+
+-- 6. RLS Policies
+-- Public Visitors: Can insert new orders but cannot read other customers' orders
+CREATE POLICY "Public can insert orders" ON public.orders FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public can view published models" ON public.preview_models FOR SELECT USING (published = true);
+CREATE POLICY "Public can view public settings" ON public.site_settings FOR SELECT USING (true);
+
+-- Authenticated Admin: Full access to all tables
+CREATE POLICY "Admins full access orders" ON public.orders FOR ALL TO authenticated USING (true);
+CREATE POLICY "Admins full access preview_models" ON public.preview_models FOR ALL TO authenticated USING (true);
+CREATE POLICY "Admins full access payments" ON public.payments FOR ALL TO authenticated USING (true);
+CREATE POLICY "Admins full access site_settings" ON public.site_settings FOR ALL TO authenticated USING (true);
+
+-- 7. Storage Buckets Setup
+-- Note: Create 'orders-private' (private bucket) and 'preview-models-public' (public bucket) in Supabase Storage.
+`;
+    }
+
+    /* --------------------------------------------------------------------------
+       13. VIDEO PLAYER MODAL & MEDIA CONTROLS
+       -------------------------------------------------------------------------- */
+    window.openVideoPlayer = function(title, desc, videoUrl) {
+      document.getElementById("modal-video-title").textContent = title;
+      document.getElementById("modal-video-desc").textContent = desc;
+      const player = document.getElementById("global-video-player");
+      player.src = videoUrl;
+      player.play().catch(() => {});
+      openModal("modal-video-player");
+    };
+
+    function setupVideoModalControls() {
+      const closeBtn = document.getElementById("close-video-modal-btn");
+      const player = document.getElementById("global-video-player");
+
+      function stopVideo() {
+        player.pause();
+        player.src = "";
+      }
+
+      closeBtn.addEventListener("click", stopVideo);
+      document.getElementById("modal-video-player").addEventListener("click", (e) => {
+        if (e.target.id === "modal-video-player") stopVideo();
+      });
+    }
+
+    /* --------------------------------------------------------------------------
+       14. MODAL & TOAST UTILITIES
+       -------------------------------------------------------------------------- */
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+        if (id === "modal-video-player") {
+          const player = document.getElementById("global-video-player");
+          player.pause();
+          player.src = "";
+        }
+      }
+    }
+
+    function setupModalCloseListeners() {
+      document.querySelectorAll("[data-close-modal]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const modal = btn.closest(".modal-overlay");
+          if (modal) closeModal(modal.id);
+        });
+      });
+
+      document.querySelectorAll(".modal-overlay").forEach(modal => {
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal(modal.id);
+        });
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          document.querySelectorAll(".modal-overlay.active").forEach(m => closeModal(m.id));
+        }
+      });
+    }
+
+    function showToast(message, type = "info") {
+      const container = document.getElementById("toast-container");
+      if (!container) return;
+
+      const toast = document.createElement("div");
+      toast.className = `toast toast-${type}`;
+      
+      let icon = "ℹ️";
+      if (type === "success") icon = "✅";
+      if (type === "error") icon = "❌";
+
+      toast.innerHTML = `<span>${icon}</span><span style="flex-grow: 1;">${escapeHTML(message)}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(100%)";
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    function escapeHTML(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    /* --------------------------------------------------------------------------
+       15. MOBILE MENU & ACCORDION
+       -------------------------------------------------------------------------- */
+    function setupInteractions() {
+      // Mobile drawer
+      const toggleBtn = document.getElementById("mobile-toggle-btn");
+      const drawer = document.getElementById("mobile-nav-drawer");
+      toggleBtn.addEventListener("click", () => {
+        drawer.classList.toggle("open");
+      });
+      document.querySelectorAll(".mobile-nav-link").forEach(link => {
+        link.addEventListener("click", () => drawer.classList.remove("open"));
+      });
+
+      // FAQ accordion
+      document.querySelectorAll(".faq-item").forEach(item => {
+        const btn = item.querySelector(".faq-question-btn");
+        btn.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+          document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+          if (!isOpen) item.classList.add("open");
+        });
+      });
+
+      // Filter and search listeners in admin orders
+      document.getElementById("order-search-input")?.addEventListener("input", renderAdminOrdersTable);
+      document.getElementById("order-status-filter")?.addEventListener("change", renderAdminOrdersTable);
+
+      // Copyright year dynamic update
+      const yearEl = document.getElementById("current-year-display");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    }
+
+    /* --------------------------------------------------------------------------
+       16. INITIAL STARTUP
+       -------------------------------------------------------------------------- */
+    document.addEventListener("DOMContentLoaded", async () => {
+      await initIndexedDB();
+      initSupabase();
+      setupInteractions();
+      setupOrderForm();
+      setupAdminAuth();
+      setupAdminDashboardTabs();
+      setupSettings();
+      setupModalCloseListeners();
+      setupVideoModalControls();
+      await loadData();
+    });
+  </script>
+</body>
+</html>
