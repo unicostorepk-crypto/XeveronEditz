@@ -2028,7 +2028,7 @@
         <div class="storage-mode-banner" id="admin-storage-banner">
           <div>
             <strong>Storage Status:</strong>
-            <span id="storage-status-text" style="color: var(--text-secondary); margin-left: 0.5rem;">Local IndexedDB Active</span>
+            <span id="storage-status-text" style="color: var(--text-secondary); margin-left: 0.5rem;">Supabase Connected</span>
           </div>
           <button type="button" class="btn btn-secondary" id="btn-show-schema" style="padding: 0.35rem 0.85rem; font-size: 0.75rem;">
             View Supabase SQL Schema
@@ -2273,8 +2273,18 @@
       maxDuration: 180,
       basePrice: 1.50,
       priceIncrement: 0.50,
-      maxUploadSizeMB: 500
+      maxUploadSizeMB: 500,
+      supabaseUrl: "https://qtspshzwskghzzgqgqls.supabase.co",
+      supabaseAnonKey: "sb_publishable_ya6IGJeL_eekHAWh6Mb6tw_Abpnpbap"
     };
+
+    function normalizeSupabaseUrl(url) {
+      if (!url) return "";
+      let u = url.trim();
+      u = u.replace(/\/rest\/v1\/?$/i, "");
+      u = u.replace(/\/+$/, "");
+      return u;
+    }
 
     // Supabase Connection State
     let supabaseClient = null;
@@ -2380,6 +2390,7 @@
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
     }
+    window.escapeHTML = escapeHTML;
 
     function formatCurrency(amount) {
       return "$" + Number(amount || 0).toFixed(2);
@@ -2491,24 +2502,35 @@
        5. SUPABASE CONNECTION & CLOUD SYNC
        -------------------------------------------------------------------------- */
     function initSupabase() {
-      const savedUrl = localStorage.getItem("xeveron_sb_url") || "";
-      const savedAnon = localStorage.getItem("xeveron_sb_anon") || "";
+      let url = "";
+      let anonKey = "";
+      try {
+        url = localStorage.getItem("xeveron_sb_url") || CONFIG.supabaseUrl;
+        anonKey = localStorage.getItem("xeveron_sb_anon") || CONFIG.supabaseAnonKey;
+      } catch (e) {
+        url = CONFIG.supabaseUrl;
+        anonKey = CONFIG.supabaseAnonKey;
+      }
+      url = normalizeSupabaseUrl(url);
 
-      if (savedUrl && savedAnon && window.supabase && typeof window.supabase.createClient === "function") {
+      if (url && anonKey && window.supabase && typeof window.supabase.createClient === "function") {
         try {
-          supabaseClient = window.supabase.createClient(savedUrl, savedAnon);
+          supabaseClient = window.supabase.createClient(url, anonKey);
           isSupabaseConfigured = true;
           updateStorageBanner(true);
+          updateLoginModalBackendStatus();
           return true;
         } catch (err) {
           console.warn("Supabase init error:", err);
           isSupabaseConfigured = false;
           updateStorageBanner(false);
+          updateLoginModalBackendStatus();
           return false;
         }
       } else {
         isSupabaseConfigured = false;
         updateStorageBanner(false);
+        updateLoginModalBackendStatus();
         return false;
       }
     }
@@ -2576,15 +2598,15 @@
           if (!error && data) {
             orders = data.map(o => ({
               id: o.id,
-              clientName: o.client_name,
-              contact: o.client_contact,
-              duration: o.duration,
-              totalPrice: o.total_price,
-              status: o.status || "pending",
-              modelTitle: o.model_title,
-              cloudLink: o.cloud_link,
-              instructions: o.instructions,
-              fileName: o.file_name,
+              clientName: o.client_name || o.customer_name || "Client",
+              contact: o.client_contact || o.whatsapp_number || "-",
+              duration: o.duration || o.video_duration_seconds || 10,
+              totalPrice: o.total_price || o.estimated_price || 1.50,
+              status: (o.status || o.order_status || "pending").toLowerCase(),
+              modelTitle: o.model_title || "Custom",
+              cloudLink: o.cloud_link || "",
+              instructions: o.instructions || o.editing_instructions || "",
+              fileName: o.file_name || o.video_filename || null,
               createdAt: o.created_at
             }));
           }
@@ -2694,7 +2716,7 @@
       const pill = document.getElementById("login-supabase-status-pill");
       if (!pill) return;
       if (isSupabaseConfigured && supabaseClient) {
-        pill.textContent = "Supabase Auth Active";
+        pill.textContent = "Supabase Connected";
         pill.style.borderColor = "var(--status-success)";
         pill.style.color = "var(--status-success)";
       } else {
@@ -3024,8 +3046,8 @@
           if (!isOpen) {
             const urlInput = document.getElementById("quick-supabase-url");
             const anonInput = document.getElementById("quick-supabase-anon");
-            if (urlInput) urlInput.value = localStorage.getItem("xeveron_sb_url") || "";
-            if (anonInput) anonInput.value = localStorage.getItem("xeveron_sb_anon") || "";
+            if (urlInput) urlInput.value = localStorage.getItem("xeveron_sb_url") || CONFIG.supabaseUrl;
+            if (anonInput) anonInput.value = localStorage.getItem("xeveron_sb_anon") || CONFIG.supabaseAnonKey;
           }
         });
       }
@@ -3034,7 +3056,7 @@
         saveQuickBtn.addEventListener("click", () => {
           const urlInput = document.getElementById("quick-supabase-url");
           const anonInput = document.getElementById("quick-supabase-anon");
-          const url = urlInput ? urlInput.value.trim() : "";
+          const url = normalizeSupabaseUrl(urlInput ? urlInput.value.trim() : "");
           const anon = anonInput ? anonInput.value.trim() : "";
 
           if (!url || !anon) {
@@ -3074,7 +3096,7 @@
 
           if (!emailOrUser || !password) {
             if (errorMsg) {
-              errorMsg.textContent = "Please enter both email and password.";
+              errorMsg.textContent = "Please enter both email/username and password.";
               errorMsg.style.display = "block";
             }
             return;
@@ -3082,7 +3104,7 @@
 
           if (submitBtn) {
             submitBtn.disabled = true;
-            submitBtn.innerHTML = "<span>Authenticating...</span>";
+            submitBtn.innerHTML = "<span>Authenticating with Supabase...</span>";
           }
           if (errorMsg) errorMsg.style.display = "none";
 
@@ -3094,7 +3116,14 @@
             if (isSupabaseConfigured && supabaseClient && supabaseClient.auth) {
               let emailToUse = emailOrUser;
               if (!emailToUse.includes("@")) {
-                emailToUse = emailOrUser.toLowerCase() === "abdullahasad" ? "abdullahasad@gmail.com" : (emailOrUser + "@gmail.com");
+                const lower = emailOrUser.toLowerCase();
+                if (lower === "abdullahasad") {
+                  emailToUse = "abdullahasad@gmail.com";
+                } else if (lower === "abd4579584") {
+                  emailToUse = "abd4579584@gmail.com";
+                } else {
+                  emailToUse = emailOrUser + "@gmail.com";
+                }
               }
 
               let res = await supabaseClient.auth.signInWithPassword({
@@ -3119,7 +3148,7 @@
                 if (errorMsg) {
                   let msg = authError.message || "Invalid login credentials.";
                   if (msg.toLowerCase().includes("invalid login credentials") && !emailOrUser.includes("@")) {
-                    msg += " (Note: Supabase Authentication requires the full email address used to create the admin account).";
+                    msg += " (Note: If your Supabase account was created with a full email, please enter the complete email address).";
                   }
                   errorMsg.textContent = msg;
                   errorMsg.style.display = "block";
@@ -3149,7 +3178,7 @@
               const quickAnon = document.getElementById("quick-supabase-anon") ? document.getElementById("quick-supabase-anon").value.trim() : "";
 
               if (quickUrl && quickAnon) {
-                localStorage.setItem("xeveron_sb_url", quickUrl);
+                localStorage.setItem("xeveron_sb_url", normalizeSupabaseUrl(quickUrl));
                 localStorage.setItem("xeveron_sb_anon", quickAnon);
                 if (initSupabase() && supabaseClient) {
                   const retryRes = await supabaseClient.auth.signInWithPassword({
@@ -3602,16 +3631,16 @@
 
           const orderRecord = {
             id: orderId,
-            clientName: name,
-            contact: contact,
+            client_name: name,
+            client_contact: contact,
             duration: duration,
-            totalPrice: totalPrice,
+            total_price: totalPrice,
             status: "pending",
-            modelTitle: selectedModelTitle,
-            cloudLink: cloudLink,
+            model_title: selectedModelTitle,
+            cloud_link: cloudLink,
             instructions: instructions,
-            fileName: state.selectedOrderFile ? state.selectedOrderFile.name : null,
-            createdAt: new Date().toISOString()
+            file_name: state.selectedOrderFile ? state.selectedOrderFile.name : null,
+            created_at: new Date().toISOString()
           };
 
           // Store file blob locally in IndexedDB if attached
@@ -3627,27 +3656,40 @@
           // Persist to Supabase if configured
           if (isSupabaseConfigured && supabaseClient) {
             try {
-              await supabaseClient.from("orders").insert({
-                id: orderRecord.id,
-                client_name: orderRecord.clientName,
-                client_contact: orderRecord.contact,
-                duration: orderRecord.duration,
-                total_price: orderRecord.totalPrice,
-                status: orderRecord.status,
-                model_title: orderRecord.modelTitle,
-                cloud_link: orderRecord.cloudLink,
-                instructions: orderRecord.instructions,
-                file_name: orderRecord.fileName,
-                created_at: orderRecord.createdAt
-              });
+              await supabaseClient.from("orders").insert([orderRecord]);
             } catch (err) {
               console.warn("Supabase order insert note:", err);
             }
           }
 
           // Persist locally
-          await idbPut("orders", orderRecord);
-          state.orders.unshift(orderRecord);
+          await idbPut("orders", {
+            id: orderId,
+            clientName: name,
+            contact: contact,
+            duration: duration,
+            totalPrice: totalPrice,
+            status: "pending",
+            modelTitle: selectedModelTitle,
+            cloudLink: cloudLink,
+            instructions: instructions,
+            fileName: state.selectedOrderFile ? state.selectedOrderFile.name : null,
+            createdAt: orderRecord.created_at
+          });
+          
+          state.orders.unshift({
+            id: orderId,
+            clientName: name,
+            contact: contact,
+            duration: duration,
+            totalPrice: totalPrice,
+            status: "pending",
+            modelTitle: selectedModelTitle,
+            cloudLink: cloudLink,
+            instructions: instructions,
+            fileName: state.selectedOrderFile ? state.selectedOrderFile.name : null,
+            createdAt: orderRecord.created_at
+          });
 
           // Reset Form
           orderForm.reset();
@@ -3679,8 +3721,8 @@
       const anonInput = document.getElementById("setting-supabase-anon");
       const deliveryInput = document.getElementById("setting-delivery-text");
 
-      if (urlInput) urlInput.value = localStorage.getItem("xeveron_sb_url") || "";
-      if (anonInput) anonInput.value = localStorage.getItem("xeveron_sb_anon") || "";
+      if (urlInput) urlInput.value = localStorage.getItem("xeveron_sb_url") || CONFIG.supabaseUrl;
+      if (anonInput) anonInput.value = localStorage.getItem("xeveron_sb_anon") || CONFIG.supabaseAnonKey;
       if (deliveryInput) deliveryInput.value = localStorage.getItem("xeveron_delivery_text") || CONFIG.deliveryTimeMsg;
 
       // Supabase Form Save
@@ -3688,7 +3730,7 @@
       if (sbForm) {
         sbForm.addEventListener("submit", (e) => {
           e.preventDefault();
-          const url = urlInput ? urlInput.value.trim() : "";
+          const url = normalizeSupabaseUrl(urlInput ? urlInput.value.trim() : "");
           const anon = anonInput ? anonInput.value.trim() : "";
 
           if (!url || !anon) {
